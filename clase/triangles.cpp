@@ -47,7 +47,7 @@ GLuint shaders()
 {
 printf("shaders\n");
 
-   const char *vertex_shader = "#version 430 core\n"
+   const char *vertex_shader = "#version 300\n"
                                "layout(location = 0) in vec4 vPosition;"
                                "void main() {"
                                "   gl_Position = vPosition;"
@@ -56,7 +56,7 @@ printf("shaders\n");
    glShaderSource(vertexShader, 1, &vertex_shader, NULL);
    glCompileShader(vertexShader);
 
-   const char *fragment_shader = "#version 430 core\n"
+   const char *fragment_shader = "#version 300\n"
                                  "out vec4 fColor;"
                                  "void main () {"
                                  "   fColor = vec4 (0.0, 0.0, 1.0, 1.0);"
@@ -104,7 +104,7 @@ int main(int argc, char** argv)
    glutInit(&argc, argv);
    glutInitDisplayMode(GLUT_RGBA);
    glutInitWindowSize(512, 512);
-   glutInitContextVersion(4, 3);
+   glutInitContextVersion(3, 0);
    glutInitContextProfile(GLUT_CORE_PROFILE);
    glutCreateWindow("Letras");
 

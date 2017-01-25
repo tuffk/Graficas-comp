@@ -19,12 +19,9 @@ void drawR(int, int);
 void drawD(int, int);
 void drawG(int,int);
 void drawO(int, int);
-void drawS(int, int);
-void drawC(int, int);
 void drawE(int, int);
 void drawZ(int, int);
 void drawN(int, int);
-void drawP(int, int);
 void drawU(int, int);
 void drawJaime(int,int);
 void drawMargolin(int,int);
@@ -558,88 +555,6 @@ void drawI(int x, int y)
 	glRectf(-45+x,37.5+y,-42.5+x,35+y);
 }
 
-//C
-void drawC(int x, int y) {
-	//1,1 
-	coloreamela();
-	glRectf(-50 + x, 45 + y, -47.5 + x, 42.5 + y);
-	//0,2
-	coloreamela();
-	glRectf(-47.5 + x, 47.5 + y, -45 + x, 45 + y);
-	//-1,3
-	coloreamela();
-	glRectf(-45 + x, 50 + y, -42.5 + x, 47.5 + y);
-	//-1,4
-	coloreamela();
-	glRectf(-42.5 + x, 50 + y, -40 + x, 47.5 + y);
-	//-1,5
-	coloreamela();
-	glRectf(-40 + x, 50 + y, -37.5 + x, 47.5 + y);
-	//2,1
-	coloreamela();
-	glRectf(-50 + x, 42.5 + y, -47.5 + x, 40 + y);
-	//3,2
-	coloreamela();
-	glRectf(-47.5 + x, 40 + y, -45 + x, 37.5 + y);
-	//4,3
-	coloreamela();
-	glRectf(-45 + x, 37.5 + y, -42.5 + x, 35 + y);
-	//4,4
-	coloreamela();
-	glRectf(-42.5 + x, 37.5 + y, -40 + x, 35 + y);
-	//4,5
-	coloreamela();
-	glRectf(-40 + x, 37.5 + y, -37.5 + x, 35 + y);
-}
-
-//funcion para dibujar S
-void drawS(int x, int y) {
-	//1,1
-	coloreamela();
-	glRectf(-50 + x, 50 + y, -47.5 + x, 47.5 + y);
-	//1,2
-	coloreamela();
-	glRectf(-47.5 + x, 50 + y, -45 + x, 47.5 + y);
-	//1,3
-	coloreamela();
-	glRectf(-45 + x, 50 + y, -42.5 + x, 47.5 + y);
-	//1,4
-	coloreamela();
-	glRectf(-42.5 + x, 50 + y, -40 + x, 47.5 + y);
-	//1,5
-	coloreamela();
-	glRectf(-40 + x, 50 + y, -37.5 + x, 47.5 + y);
-	//2,1
-	coloreamela();
-	glRectf(-50 + x, 47.5 + y, -47.5 + x, 45 + y);
-	//3,2
-	coloreamela();
-	glRectf(-47.5 + x, 45 + y, -45 + x, 42.5 + y);
-	//3,3
-	coloreamela();
-	glRectf(-45 + x, 45 + y, -42.5 + x, 42.5 + y);
-	//3,4
-	coloreamela();
-	glRectf(-42.5 + x, 45 + y, -40 + x, 42.5 + y);
-	//4,5
-	coloreamela();
-	glRectf(-40 + x, 42.5 + y, -37.5 + x, 40 + y);
-	//5,5
-	coloreamela();
-	glRectf(-40 + x, 40 + y, -37.5 + x, 37.5 + y);
-	//6,4
-	coloreamela();
-	glRectf(-42.5 + x, 37.5 + y, -40 + x, 35 + y);
-	//6,3
-	coloreamela();
-	glRectf(-45 + x, 37.5 + y, -42.5 + x, 35 + y);
-	//6,2
-	coloreamela();
-	glRectf(-47.5 + x, 37.5 + y, -45 + x, 35 + y);
-	//6,1
-	coloreamela();
-	glRectf(-50 + x, 37.5 + y, -47.5 + x, 35 + y);
-}
 
 //funcion para dibujar L
 void drawL(int x, int y) {
@@ -719,48 +634,6 @@ void draw9(int x, int y)
 	glRectf(-42.5+x,45+y,-40+x,42.5+y);
 }
 
-//funcion para dibujar P
-void drawP(int x, int y) {
-	//1,1
-	coloreamela();
-	glRectf(-50 + x, 50 + y, -47.5 + x, 47.5 + y);
-	//2,1
-	coloreamela();
-	glRectf(-50 + x, 47.5 + y, -47.5 + x, 45 + y);
-	//3, 1
-	coloreamela();
-	glRectf(-50 + x, 45 + y, -47.5 + x, 42.5 + y);
-	//4, 1
-	coloreamela();
-	glRectf(-50 + x, 42.5 + y, -47.5 + x, 40 + y);
-	//5, 1
-	coloreamela();
-	glRectf(-50 + x, 40 + y, -47.5 + x, 37.5 + y);
-	//6, 1
-	coloreamela();
-	glRectf(-50 + x, 37.5 + y, -47.5 + x, 35 + y);
-	//1, 2
-	coloreamela();
-	glRectf(-47.5 + x, 50 + y, -45 + x, 47.5 + y);
-	//1, 3
-	coloreamela();
-	glRectf(-45 + x, 50 + y, -42.5 + x, 47.5 + y);
-	//1, 4
-	coloreamela();
-	glRectf(-42.5 + x, 50 + y, -40 + x, 47.5 + y);
-	//2, 5
-	coloreamela();
-	glRectf(-40 + x, 47.5 + y, -37.5 + x, 45 + y);
-	//3, 2
-	coloreamela();
-	glRectf(-47.5 + x, 45 + y, -45 + x, 42.5 + y);
-	//3, 3
-	coloreamela();
-	glRectf(-45 + x, 45 + y, -42.5 + x, 42.5 + y);
-	//3, 4
-	coloreamela();
-	glRectf(-42.5 + x, 45 + y, -40 + x, 42.5 + y);
-}
 
 //funcion para dibujar E
 void drawE(int x, int y) {
@@ -983,7 +856,7 @@ void draw3(int x, int y)
 	glRectf(-40+x,37.5+y,-37.5+x,35+y);
 }
 
-//funcion para dibujar D
+//funcion para dibujar D no se usa, favor de comentarlo 
 void drawD(int x, int y) {
 	//1,1
 	coloreamela();

@@ -10,6 +10,12 @@
 	y/Y => mover camara en y +/-
 	z/Z => mover camara en z +/-
 */
+/*
+	jiame margolin 
+	A01019332
+	Graficas computaiconales
+	tankque topo-volador a control remoto
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <GL/glut.h>
@@ -28,6 +34,8 @@ void caparazon();
 void cuerpo();
 void antena();
 void ojo();
+void alasI();
+void alasD();
 
 //Variables que mueven la pos de la luz
 float movX = 1.0;
@@ -111,6 +119,8 @@ void armamela()
 	cuerpo();// 8 
 	antena();//9 
 	ojo();// 10
+	alasI();//11
+	alasD();//12
 }
 
 //lo normal
@@ -340,5 +350,45 @@ void ojo() {
 		glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
 		glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
 		glutSolidSphere(0.1, 15, 15);
+	glPopMatrix();
+}
+
+//alas
+void alasI()
+{
+	glPushMatrix();
+		glTranslatef(0.3, 0.2, 0);
+		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+		glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+		glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+		glRotated(-90,0,1,1);
+		//glTranslatef(1.5f,1.7f,1.0f);
+		glBegin(GL_TRIANGLES);   
+			glVertex3f( 0.0f, 0.7f, 0.0f);
+			glVertex3f(-0.7f, -0.7f, 0.7f);
+			glVertex3f(0.7f, -0.7f, 0.7f);
+	  glEnd();
+	glPopMatrix();
+}
+
+//alas
+void alasD()
+{
+	glPushMatrix();
+		glTranslatef(0.3, 0.2, 1.7);
+		glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient_color);
+		glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+		glMaterialfv(GL_FRONT, GL_SPECULAR, no_mat);
+		glMaterialfv(GL_FRONT, GL_SHININESS, no_shininess);
+		glMaterialfv(GL_FRONT, GL_EMISSION, no_mat);
+		glRotated(-90,0,1,1);
+		//glTranslatef(1.5f,1.7f,1.0f);
+		glBegin(GL_TRIANGLES);   
+			glVertex3f( 0.0f, 0.7f, 0.0f);
+			glVertex3f(-0.7f, -0.7f, 0.7f);
+			glVertex3f(0.7f, -0.7f, 0.7f);
+	  glEnd();
 	glPopMatrix();
 }

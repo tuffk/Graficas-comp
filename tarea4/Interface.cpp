@@ -43,6 +43,7 @@ void Interface::init(void) {
 	createSaturn();
 	createUranus();
 	createNeptune();
+  createPluto();
 }
 
 // crear lso planetas
@@ -166,7 +167,6 @@ void Interface::createNeptune() {
 	Planet *neptune = new Planet(16.9933, .2422, .1954, 0.9719, neptuneMaterial);
 	neptune->insertRings(true);
 	Material *tritonMaterial = new Material(.5, .5, .5, 0.0);
-	//Esta luna, puede que no se vea mucho por los anillos, est� en el radio interior del anillo
 	Planet *triton = new Planet(.2422 + 0.12, 0.02440, .15804, .2, tritonMaterial);
 	neptune->pushMoon(triton); // luna 7
 	planets->push_back(neptune);
@@ -175,7 +175,9 @@ void Interface::createNeptune() {
 //pluto
 void Interface::createPluto()
 {
-  
+  Material *plutoMatt = new Material(0.8,0.57,0.25,0.0);
+  Planet *pluto = new Planet (19.2,0.2,0.15,1,plutoMatt);
+  planets->push_back(pluto);
 }
 
 Interface::~Interface(){

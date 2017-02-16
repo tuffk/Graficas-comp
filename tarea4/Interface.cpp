@@ -73,7 +73,7 @@ void Interface::reshape(int w, int h) {
 	gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	// camara pos
 	glRotatef(-15, -1, 0, 0);
-	glTranslatef(0.0, -5.0, -18.0);
+	glTranslatef(0.0, -5.0, -15.0);
 }
 
 //simulation

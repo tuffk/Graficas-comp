@@ -29,8 +29,5 @@
 *.app
 
 # Customized
-JA*
-ja*
-Ja*
 *.zip
 *.tar.*

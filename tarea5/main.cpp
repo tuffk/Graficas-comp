@@ -1,5 +1,4 @@
 /*
-	Teclados:
 	S mueve de manera en revolucion los brazos
 	A mueve los brazos de manera rotacional
 	E mueve el codo de manera rotacional

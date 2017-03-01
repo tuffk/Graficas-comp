@@ -68,71 +68,80 @@ void Interface::reshape(int w, int h) {
 	glRotatef(35, 0.0, 1.0, 0.0);
 }
 
-/*
-	Teclados: 
-	S mueve de manera en revolucion los brazos
-	A mueve los brazos de manera rotacional
-	E mueve el codo de manera rotacional
-	t mueve el antebrazo en torsion
-	d mueve de manera rotacional la mano en X
-	f mueve de manera rotacional la mano en Y
-	x gira la cabeza de manera rotacional en X
-	c mueve la cabeza en rotacion
-	p mueve la pierna en rotacion en X
-	o mueve la pierna en rotacion en Z
-	l mueve la rodilla en rotacion en X
-	m mueve el tobillo en rotacion en x
-*/
 void Interface::keyboard(unsigned char key, int x, int y) {
 
 	switch (key) {
 	case 's':
-		robot->setShoulderZ( (robot->getShoulderZ() + 5) % 360 );
-		glutPostRedisplay();
+		if (robot->getShoulderZ() < 245){
+			robot->setShoulderZ( (robot->getShoulderZ() + 5) % 360 );
+			glutPostRedisplay();
+		}// limite inferior movimiento hombros
 		break;
 	case 'S':
-		robot->setShoulderZ((robot->getShoulderZ() - 5) % 360);
-		glutPostRedisplay();
+		if (robot->getShoulderZ() > 135){
+			robot->setShoulderZ((robot->getShoulderZ() - 5) % 360);
+			glutPostRedisplay();
+		}// limite superior movimiento hombros
 		break;
 	case 'a':
-		robot->setShoulderX( (robot->getShoulderX() + 5) % 360 );
-		glutPostRedisplay();
+		if (robot->getShoulderX() < 150){
+			robot->setShoulderX( (robot->getShoulderX() + 5) % 360 );
+			glutPostRedisplay();
+		} // limite baila izq
 		break;
 	case 'A':
-		robot->setShoulderX((robot->getShoulderX() - 5) % 360);
-		glutPostRedisplay();
+		if (robot->getShoulderX() > 45){
+			robot->setShoulderX((robot->getShoulderX() - 5) % 360);
+			glutPostRedisplay();
+		} // limite baile der
 		break;
 	case 'e':
-		robot->setElbow( (robot->getElbow() + 5) % 360);
-		glutPostRedisplay();
+		if(robot->getElbow() < 95){
+			robot->setElbow( (robot->getElbow() + 5) % 360);
+			glutPostRedisplay();
+		} // limite estirar brazo
 		break;
 	case 'E':
-		robot->setElbow((robot->getElbow() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getElbow() > -45){
+			robot->setElbow((robot->getElbow() - 5) % 360);
+			glutPostRedisplay();
+		} // limite contraer brazo
 		break;
 	case 't':
-		robot->setTorsion( (robot->getTorsion() + 5) % 360 );
-		glutPostRedisplay();
+		if(robot->getTorsion() < 80) {
+			robot->setTorsion( (robot->getTorsion() + 5) % 360 );
+			glutPostRedisplay();
+		} // limite torcion muñecas
 		break;
 	case 'T':
-		robot->setTorsion((robot->getTorsion() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getTorsion() > -80) {
+			robot->setTorsion((robot->getTorsion() - 5) % 360);
+			glutPostRedisplay();
+		} // limite torcion muñecas
 		break;
 	case 'd':
-		robot->setAnguloMano1( (robot->getAnguloMano1() + 5) % 360);
-		glutPostRedisplay();
+		if(robot->getAnguloMano1() < 25) {
+			robot->setAnguloMano1( (robot->getAnguloMano1() + 5) % 360);
+			glutPostRedisplay();
+		} // limite muñecas
 		break;
 	case 'D':
-		robot->setAnguloMano1( (robot->getAnguloMano1() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getAnguloMano1() > -35) {
+			robot->setAnguloMano1( (robot->getAnguloMano1() - 5) % 360);
+			glutPostRedisplay();
+		} // limite muñecas
 		break;
 	case 'f':
-		robot->setAnguloMano2( (robot->getAnguloMano2() + 5) % 360);
-		glutPostRedisplay();
+		if (robot->getAnguloMano2() < 40 ) {
+			robot->setAnguloMano2( (robot->getAnguloMano2() + 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 'F':
-		robot->setAnguloMano2( (robot->getAnguloMano2() - 5) % 360);
-		glutPostRedisplay();
+		if (robot->getAnguloMano2() > -35){
+			robot->setAnguloMano2( (robot->getAnguloMano2() - 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 'x':
 		robot->setGiroCabeza( (robot->getGiroCabeza() + 5) % 360);

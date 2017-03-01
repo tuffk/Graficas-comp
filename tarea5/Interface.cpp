@@ -135,61 +135,85 @@ void Interface::keyboard(unsigned char key, int x, int y) {
 		if (robot->getAnguloMano2() < 40 ) {
 			robot->setAnguloMano2( (robot->getAnguloMano2() + 5) % 360);
 			glutPostRedisplay();
-		}
+		} // caramel dance
 		break;
 	case 'F':
 		if (robot->getAnguloMano2() > -35){
 			robot->setAnguloMano2( (robot->getAnguloMano2() - 5) % 360);
 			glutPostRedisplay();
-		}
+		} // caramel dance
 		break;
 	case 'x':
-		robot->setGiroCabeza( (robot->getGiroCabeza() + 5) % 360);
-		glutPostRedisplay();
+		if (robot->getGiroCabeza() < 35){
+			robot->setGiroCabeza( (robot->getGiroCabeza() + 5) % 360);
+			glutPostRedisplay();
+		} // limite si
 		break;
 	case 'X':
-		robot->setGiroCabeza((robot->getGiroCabeza() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getGiroCabeza() > -15){
+			robot->setGiroCabeza((robot->getGiroCabeza() - 5) % 360);
+			glutPostRedisplay();
+		} // limite no
 		break;
 	case 'c':
-		robot->setRotacionCabeza( (robot->getRotacionCabeza() + 5) % 360);
-		glutPostRedisplay();
+		if(robot->getRotacionCabeza() < 35) {
+			robot->setRotacionCabeza( (robot->getRotacionCabeza() + 5) % 360);
+			glutPostRedisplay();
+		}// limite no
 		break;
 	case 'C':
-		robot->setRotacionCabeza((robot->getRotacionCabeza() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getRotacionCabeza() > -35){
+			robot->setRotacionCabeza((robot->getRotacionCabeza() - 5) % 360);
+			glutPostRedisplay();
+		} // limite no
 		break;
 	case 'p':
-		robot->setAnguloPierna1( (robot->getAnguloPierna1() + 5) % 360);
-		glutPostRedisplay();
+		if(robot->getAnguloPierna1() < 15){
+			robot->setAnguloPierna1( (robot->getAnguloPierna1() + 5) % 360);
+			glutPostRedisplay();
+		} // posesion por satanas
 		break;
 	case 'P':
-		robot->setAnguloPierna1((robot->getAnguloPierna1() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getAnguloPierna1() > -85) {
+			robot->setAnguloPierna1((robot->getAnguloPierna1() - 5) % 360);
+			glutPostRedisplay();
+		}// sentarse
 		break;
 	case 'o':
-		robot->setAnguloPierna2((robot->getAnguloPierna2() + 5) % 360);
-		glutPostRedisplay();
+		if(robot->getAnguloPierna2() < 20){
+			robot->setAnguloPierna2((robot->getAnguloPierna2() + 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 'O':
-		robot->setAnguloPierna2((robot->getAnguloPierna2() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getAnguloPierna2() > -20){
+			robot->setAnguloPierna2((robot->getAnguloPierna2() - 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 'l':
-		robot->setRodilla( (robot->getRodilla() + 5) % 360);
-		glutPostRedisplay();
+		if(robot->getRodilla() < 80){
+			robot->setRodilla( (robot->getRodilla() + 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 'L':
-		robot->setRodilla((robot->getRodilla() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getRodilla() > -10){
+			robot->setRodilla((robot->getRodilla() - 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 'm':
-		robot->setTobillo( (robot->getTobillo() + 5) % 360);
-		glutPostRedisplay();
+		if(robot->getTobillo() < 10){
+			robot->setTobillo( (robot->getTobillo() + 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 'M':
-		robot->setTobillo((robot->getTobillo() - 5) % 360);
-		glutPostRedisplay();
+		if(robot->getTobillo() > -20) {
+			robot->setTobillo((robot->getTobillo() - 5) % 360);
+			glutPostRedisplay();
+		}
 		break;
 	case 27:
 		exit(0);

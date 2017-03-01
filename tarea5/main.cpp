@@ -1,16 +1,16 @@
 /*
-	S mueve de manera en revolucion los brazos
-	A mueve los brazos de manera rotacional
-	E mueve el codo de manera rotacional
-	t mueve el antebrazo en torsion
-	d mueve de manera rotacional la mano en X
-	f mueve de manera rotacional la mano en Y
-	x gira la cabeza de manera rotacional en X
-	c mueve la cabeza en rotacion
-	p mueve la pierna en rotacion en X
-	o mueve la pierna en rotacion en Z
-	l mueve la rodilla en rotacion en X
-	m mueve el tobillo en rotacion en x
+	s/S mueve de manera en revolucion los brazos
+	a/A mueve los brazos de manera rotacional
+	e/E mueve el codo de manera rotacional
+	t/T mueve el antebrazo en torsion
+	d/D mueve de manera rotacional la mano en X
+	f/F mueve de manera rotacional la mano en Y
+	x/X gira la cabeza de manera rotacional en X
+	c/C mueve la cabeza en rotacion
+	p/P mueve la pierna en rotacion en X
+	o/O mueve la pierna en rotacion en Z
+	l/L mueve la rodilla en rotacion en X
+	m/M mueve el tobillo en rotacion en x
 */
 #include "Interface.h"
 

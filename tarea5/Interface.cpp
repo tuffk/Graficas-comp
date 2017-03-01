@@ -183,37 +183,37 @@ void Interface::keyboard(unsigned char key, int x, int y) {
 		if(robot->getAnguloPierna2() < 20){
 			robot->setAnguloPierna2((robot->getAnguloPierna2() + 5) % 360);
 			glutPostRedisplay();
-		}
+		} // baila ballet
 		break;
 	case 'O':
 		if(robot->getAnguloPierna2() > -20){
 			robot->setAnguloPierna2((robot->getAnguloPierna2() - 5) % 360);
 			glutPostRedisplay();
-		}
+		}// baila ballet
 		break;
 	case 'l':
 		if(robot->getRodilla() < 80){
 			robot->setRodilla( (robot->getRodilla() + 5) % 360);
 			glutPostRedisplay();
-		}
+		} // sentarse 2.0
 		break;
 	case 'L':
 		if(robot->getRodilla() > -10){
 			robot->setRodilla((robot->getRodilla() - 5) % 360);
 			glutPostRedisplay();
-		}
+		} // sentarse 2.0 
 		break;
 	case 'm':
 		if(robot->getTobillo() < 10){
 			robot->setTobillo( (robot->getTobillo() + 5) % 360);
 			glutPostRedisplay();
-		}
+		} // limite tobillo
 		break;
 	case 'M':
 		if(robot->getTobillo() > -20) {
 			robot->setTobillo((robot->getTobillo() - 5) % 360);
 			glutPostRedisplay();
-		}
+		} // limite tobillo
 		break;
 	case 27:
 		exit(0);

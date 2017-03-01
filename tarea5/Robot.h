@@ -11,11 +11,11 @@ public:
 	//Funciones que arman el cuerpo del robot
 	void torso(double, double, Material *);
 	void cabeza(double, double, Material *, Material *, Material *);
-	void brazo(double, double, double, Material *);
-	void anteBrazo(Material *);
+	void brazo(double, double, double, Material *, Material*);
+	void anteBrazo(Material *,Material *);
 	void mano(Material *);
-	void pierna(double, double, double, Material *);
-	void espinilla(Material *);
+	void pierna(double, double, double, Material *, Material *);
+	void espinilla(Material *, Material *);
 	void pie(Material *);
 
 	//GETS

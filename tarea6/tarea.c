@@ -108,7 +108,7 @@ void HelpDisplay(GLint ww, GLint wh);
 void HelpRenderBitmapString(float x, float y, void *font, char *string);
 void room(void);
 void drawAlice(void);
-void banio(void);
+void drawcrazyLR(void);
 
 void GLMagic() {
   /* Variables de luz */
@@ -829,20 +829,20 @@ void Display(void) {
   glPushMatrix();
   glTranslatef(4.6, 0, 0);
   room();
-  banio();
+  drawcrazyLR();
   glPopMatrix();
 /*a alicia le van a cortar el cuello*/
 	glPushMatrix();
   glTranslatef(9.2, 0, 0);
   room();
-  banio();
+  drawcrazyLR();
   glPopMatrix();
 
 /*a alicia no le cortaron el * , ahora poop time*/
 	glPushMatrix();
   glTranslatef(13.8, 0, 0);
   room();
-  banio();
+  drawcrazyLR();
   glPopMatrix();
   glPopMatrix();
 
@@ -913,16 +913,18 @@ void drawAlice() {
 			glTranslatef(0.6, -0.77,0);
 			glCallList(mode5);
   	glPopMatrix();
+		/*alicia en el pais de la AA*/
+		glPushMatrix();
+			glTranslatef(0.3, 0.02, 0.4);
+			glRotatef(180, 0, 1, 0);
+			glScalef(.1, .1, .1);
+			glCallList(mode6);
+		glPopMatrix();
 }
 
-void banio() {
+void drawcrazyLR() {
   /*Toilet*/
-  glPushMatrix();
-  glTranslatef(-.8, 0, -.5);
-  glRotatef(180, 0, 1, 0);
-  glScalef(.5, .5, .5);
-  glCallList(mode6);
-  glPopMatrix();
+  
 
   /*Lavavo*/
   glPushMatrix();
@@ -932,14 +934,14 @@ void banio() {
   glCallList(mode7);
   glPopMatrix();
 
-  /*cortina Banio*/
+  /*cortina drawcrazyLR*/
   glPushMatrix();
   glTranslatef(1.5, .45, 0);
   glRotatef(90, 0, 1, 0);
   glScalef(.81, .81, .81);
   glCallList(mode8);
   glPopMatrix();
-  /*cortina Banio2*/
+  /*cortina drawcrazyLR2*/
   glPushMatrix();
   glTranslatef(0.7, .45, -0.5);
   glScalef(.81, .81, .41);

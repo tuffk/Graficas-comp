@@ -85,15 +85,15 @@ void Robot::torso(double x, double y, Material *t) {
 }
 
 
-void Robot::brazo(double x, double y, double z, Material *b) {
+void Robot::brazo(double x, double y, double z, Material *b, Material *c) {
 
 	glPushMatrix();
 		glTranslatef(x, y, z);
 		glRotatef(90, 0.0, 1.0, 0.0);
-		glRotatef((GLfloat)shoulderZ, 0.0, 0.0, 1.0); //giro de revoluci�n del brazo
+		glRotatef((GLfloat)shoulderZ, 0.0, 0.0, 1.0); //giro de revolusion del brazo
 		glTranslatef(1.75, 0.0, 0.0);
 		glPushMatrix();
-			glRotatef((GLfloat)shoulderX, 1.0, 0.0, 0.0); //giro rotacional del brazo
+			glRotatef((GLfloat)shoulderX, 1.0, 0.0, 0.0); //giro revolucion del brazo
 
 			glPushMatrix();
 				glScalef(3, .5, 1.0);
@@ -101,7 +101,7 @@ void Robot::brazo(double x, double y, double z, Material *b) {
 				glutSolidSphere(1, 20, 20);
 			glPopMatrix();
 
-			anteBrazo(b);
+			anteBrazo(b,c);
 
 		glPopMatrix();
 
@@ -110,7 +110,7 @@ void Robot::brazo(double x, double y, double z, Material *b) {
 }
 
 
-void Robot::anteBrazo(Material *b) {
+void Robot::anteBrazo(Material *b, Material *c) {
 	glPushMatrix();
 		
 			glTranslatef(3, 0.0, 0.0);
@@ -119,13 +119,13 @@ void Robot::anteBrazo(Material *b) {
 			b->createMaterial();
 			glutSolidCone(.5, 6, 20, 20);
 
-			mano(b);
+			mano(c);
 
 	glPopMatrix();
 }
 
 
-void Robot::mano(Material *b) {
+void Robot::mano(Material *c) {
 	
 	glPushMatrix();
 
@@ -134,7 +134,7 @@ void Robot::mano(Material *b) {
 		glRotatef((GLfloat)anguloMano2, 1.0, 0.0, 0.0); //giro rotacional de la mano
 		glTranslatef(0.0, 0.0, 0.5);
 		glScalef(0.4, 0.4, 0.4);
-		b->createMaterial();
+		c->createMaterial();
 		glutSolidDodecahedron();
 
 	glPopMatrix();
@@ -142,7 +142,7 @@ void Robot::mano(Material *b) {
 }
 
 
-void Robot::pierna(double x, double y, double z, Material *p) {
+void Robot::pierna(double x, double y, double z, Material *p, Material *f) {
 	glPushMatrix();
 
 		glTranslatef(x, y - 0.5, z);
@@ -154,13 +154,13 @@ void Robot::pierna(double x, double y, double z, Material *p) {
 			p->createMaterial();
 			glutSolidSphere(1.0, 20, 20);
 		glPopMatrix();
-		espinilla(p);
+		espinilla(p,f);
 
 	glPopMatrix();
 }
 
 
-void Robot::espinilla(Material *p) {
+void Robot::espinilla(Material *p, Material *f) {
 
 	glPushMatrix();
 
@@ -173,12 +173,12 @@ void Robot::espinilla(Material *p) {
 			glutSolidSphere(1.0, 20, 20);
 		glPopMatrix();
 
-		pie(p);
+		pie(f);
 	glPopMatrix();
 }
 
 
-void Robot::pie(Material *p) {
+void Robot::pie(Material *f) {
 
 	glPushMatrix();
 
@@ -186,7 +186,7 @@ void Robot::pie(Material *p) {
 		glRotatef((GLfloat) tobillo, 1.0, 0.0, 0.0); //giro rotacional del tobillo
 		glScalef(0.5, 0.5, 1.5);
 		glTranslatef(0.0, 0.0, 1.0);
-		p->createMaterial();
+		f->createMaterial();
 		glutSolidSphere(1.0, 20, 20);
 
 	glPopMatrix();

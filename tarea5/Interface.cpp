@@ -10,7 +10,7 @@ Interface::Interface() {
 //magia  OpenGL
 void Interface::init(void) {
 
-	GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+	GLfloat ambient[] = { 1.0, 0.0, 0.0, 1.0 }; // luz roja
 	GLfloat diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
 	GLfloat position[] = { 0.0, 3.0, 2.0, 0.0 };
 	GLfloat lmodel_ambient[] = { 0.4, 0.4, 0.4, 1.0 };
@@ -44,13 +44,15 @@ void Interface::display(void) {
 	Material *torso = new Material(0.3, 0.2, 0.3, 1.0);
 	robot->torso(1.0, 2.0, torso);
 
-	Material *brazo = new Material(1.0, .5, .5, 1.0);
-	robot->brazo(1.5, 2.0, 1.5, brazo);
-	robot->brazo(-1.5, 2.0, 1.5, brazo);
+	Material *brazo = new Material(0.3, 0.2, 0.3, 1.0);
+	Material *mano = new Material(1.0, .5, .5, 1.0);
+	robot->brazo(1.5, 2.0, 1.5, brazo, mano);
+	robot->brazo(-1.5, 2.0, 1.5, brazo, mano);
 
-	Material *pierna = new Material(1.0, .5, .5, 1.0);
-	robot->pierna(1.3, -2.8, 1.3, pierna);
-	robot->pierna(-1.3, -2.8, 1.3, pierna);
+	Material *pierna = new Material(0.0, .2, 1.0, 1.0);
+	Material *pie = new Material(1.0, .5, .5, 1.0);
+	robot->pierna(1.3, -2.8, 1.3, pierna, pie);
+	robot->pierna(-1.3, -2.8, 1.3, pierna, pie);
 
 	glutSwapBuffers();
 }

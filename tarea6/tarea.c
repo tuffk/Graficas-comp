@@ -889,11 +889,11 @@ void drawAlice() {
 			glScalef(1.5, .5, 1);
 			glCallList(mode2);
 		glPopMatrix();
-		/*kid Mueble*/
+		/*ubuntu clock*/
 		glPushMatrix();
-			glTranslatef(-1.5, 0.5, 4);
-			glRotatef(90, 0, 1, 0);
-			glScalef(1.5, 1, 1);
+			glTranslatef(0.5, 0.5, 0);
+			//glRotatef(90, 0, 1, 0);
+			//glScalef(0, 0, 0);
 			glCallList(mode4);
 		glPopMatrix();
 		/*mesa que mas aplauda*/

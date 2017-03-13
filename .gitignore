@@ -31,3 +31,5 @@
 # Customized
 *.zip
 *.tar.*
+
+glm/

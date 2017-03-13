@@ -1,6 +1,7 @@
 # Blender v2.69 (sub 0) OBJ File: 'Bevel Floor.blend'
 # www.blender.org
 mtllib Bevel Floor.mtl
+usemtl None
 o Plane.001_Plane.002
 v -0.870000 0.000000 -0.640002
 v -1.003333 0.000000 -0.640002

@@ -891,37 +891,56 @@ void drawAlice() {
 }
 
 void drawcrazyLR() {
-  /*Toilet*/
-  
-  /*Lavavo*/
+  /*sillon*/
   glPushMatrix();
-    glTranslatef(-2, .5, .35);
-    glRotatef(90, 0, 1, 0);
-    glScalef(.3, .2, .2);
+    glRotatef(70, 0, 1, 0);
+    glRotatef(180,1,0,0);
+    glTranslatef(-.4, -1, 1.7);
+    glScalef(.8, .8, .8);
     glCallList(mode7);
   glPopMatrix();
 
-  /*cortina drawcrazyLR*/
+  /*armchair*/
   glPushMatrix();
-    glTranslatef(1.5, .45, 0);
-    glRotatef(90, 0, 1, 0);
-    glScalef(.81, .81, .81);
+    glTranslatef(0, .45, -.4);
+    glScalef(.71, .71, .71);
+    glRotatef(90,1,0,0);
     glCallList(mode8);
   glPopMatrix();
-  /*cortina drawcrazyLR2*/
+  /*lamp*/
   glPushMatrix();
-    glTranslatef(0.7, .45, -0.5);
-    glScalef(.81, .81, .41);
-    glCallList(mode8);
+    glTranslatef(0, 0.1, 1);
+    glScalef(.5, .5, .5);
+    glCallList(mode10);
   glPopMatrix();
 
-  /*shower*/
+  /*carrito*/
   glPushMatrix();
-    glTranslatef(2.2, .70, -.5);
+    glTranslatef(2, .70, -.5);
     glRotatef(180, 0, 1, 0);
     glScalef(.5, .5, .5);
     glCallList(mode9);
   glPopMatrix();
+
+  /*gnome*/
+  glPushMatrix();
+    glRotatef(45,1,0,0);
+    glTranslatef(0,1.7,-1);
+    glScalef(0.5,0.5,0.5);
+    glCallList(mode11);
+  glPopMatrix();
+
+  /*mesa*/
+  glPushMatrix();
+    glTranslatef(2.13,.7,1.3);
+    glRotatef(90,0,0,1);
+    glScalef(4,4,4);
+    glCallList(mode12);
+  glPopMatrix();
+
+  /*barajas theme*/
+  drawCards();
+  drawHearts();
 }
 
 void drawCards(){

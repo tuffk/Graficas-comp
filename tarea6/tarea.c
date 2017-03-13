@@ -820,19 +820,30 @@ void Display(void) {
 
   /*Se dibuja el objeto 1*/
 
-  /*Cuarto Principal*/
+  /*alicia en elpais de las graficas*/
   glPushMatrix();
   room();
   drawAlice();
   glPopMatrix();
-
+/*alicia en alguna parte dodne las graficas o la fisica o ambas fracasaron*/
   glPushMatrix();
   glTranslatef(4.6, 0, 0);
   room();
   banio();
-
+  glPopMatrix();
+/*a alicia le van a cortar el cuello*/
+	glPushMatrix();
+  glTranslatef(9.2, 0, 0);
+  room();
+  banio();
   glPopMatrix();
 
+/*a alicia no le cortaron el * , ahora poop time*/
+	glPushMatrix();
+  glTranslatef(13.8, 0, 0);
+  room();
+  banio();
+  glPopMatrix();
   glPopMatrix();
 
   if (show_help)
@@ -883,17 +894,17 @@ void drawAlice() {
 		glScalef(.1, .1, .1);
 		glCallList(mode3);
 	glPopMatrix();
-		/*Planta*/
-		glPushMatrix();
-			glTranslatef(-1.5, 0.1, .2);
-			glScalef(1.5, .5, 1);
-			glCallList(mode2);
-		glPopMatrix();
 		/*ubuntu clock*/
 		glPushMatrix();
-			glTranslatef(0.5, 0.5, 0);
-			//glRotatef(90, 0, 1, 0);
-			//glScalef(0, 0, 0);
+			glTranslatef(-1.5, 1, -1);
+			glScalef(0.4, .4, .4);
+			glCallList(mode2);
+		glPopMatrix();
+		/*puerta*/
+		glPushMatrix();
+			glTranslatef(2.28, -0.08, 0);
+			glScalef(8.5,1,1);
+			glRotatef(90, 0, 1, 0);
 			glCallList(mode4);
 		glPopMatrix();
 		/*mesa que mas aplauda*/

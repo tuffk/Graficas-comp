@@ -1097,7 +1097,7 @@ int main(int argc, char **argv) {
 
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowSize(1024, 768); /*  Window Size If We Start In Windowed Mode */
-  glutCreateWindow("gilberto contestame wey");
+  glutCreateWindow("Sharmutta & Tutzke");
   if (full_screen)
     glutFullScreen();
 

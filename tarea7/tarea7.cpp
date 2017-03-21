@@ -12,7 +12,7 @@ GLfloat jpts[4][3] = {
 GLfloat apts[7][3] = {
 	{ 2.0, 1.0, 0.0}, { 2.0, 3.0, 0.0}, 
 	{-4.8, 3.0, 0.0}, {-4.8, -4.0, 0.0},
-        {2.0, -4.0, 0.0}, {2.0, 8.0, 0.0}, {3.0, -2.0, 0.0}};
+    {2.0, -4.0, 0.0}, {2.0, 8.0, 0.0}, {3.0, -2.0, 0.0}};
 GLfloat ipts[5][3] = {
 	{0,0,0},{5,0,0},{2.5,9,0},{3.5,-4,0},{5,0,0}
     };
@@ -21,6 +21,23 @@ GLfloat arcopts[5][3] = {
     };
 GLfloat epts[6][3] = {
 	{0,0,0},{5,0,0},{3.5,9,0},{0.5,5,0},{0.5,-4,0},{5,0,0}
+    };
+GLfloat rpts[5][3] = {
+	{0,5,0},{0,0,0},{1,3,0},{2,5,0},{5,5,0}
+    };
+GLfloat gpts[8][3] = {
+	{ 2.0, 1.0, 0.0}, { 2.0, 3.0, 0.0}, 
+	{-4.8, 3.0, 0.0}, {-4.8, -4.0, 0.0},
+    {2.0, -4.0, 0.0}, {2.0, 8.0, 0.0}, {3.0, -2.0, 0.0},{2,-6,0}
+        };
+GLfloat opts[7][3] = {
+	{0,0,0},{-1.5,-1.5,0.0},{-3,-3,0},{0,-4,0},{3,-3,0},{1.5,-1.5,0.0},{0,0,0}
+    };
+GLfloat cejitapts[2][3] = {
+	{0,0,0},{2,0,0}
+    };
+GLfloat lpts[6][3] = {
+	{0,0,0},{5,0,0},{3.5,18,0},{0.5,5,0},{0.5,-4,0},{5,0,0}
     };
 
 // funciones de las letras y helpers
@@ -32,7 +49,11 @@ void pintaI();
 void pintaM();
 void pintaarco();
 void pintaE();
-
+void pintaR();
+void pintaG();
+void pintaO();
+void pintaL();
+void pintaN();
 
 //random colors
 void getColor()
@@ -74,6 +95,21 @@ void drawMARGOLIN(){
             glScalef(0.7,0.7,0.7);
             pintaA();
         glPopMatrix();
+        glPushMatrix();
+            glTranslatef(1.7,-1.7,0);
+            glScalef(0.2,1,1);
+            pintaR();
+        glPopMatrix();
+        glTranslatef(3,0,0);
+        pintaG();
+        glTranslatef(1.5,0.7,0);
+        pintaO();
+        glTranslatef(0.5,-2,0);
+        pintaL();
+        glTranslatef(1.9, 0, 0.0);
+        pintaI();
+        glTranslatef(2.5, 0, 0.0);
+        pintaN();
     glPopMatrix();
 }
 
@@ -196,6 +232,109 @@ void pintaE()
      glEnd();
   glPopMatrix();
 }
+
+void pintaR()
+{
+  int i;
+  glPushMatrix();
+    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 5, &rpts[0][0]);
+    getColor();
+    glScalef(0.5, 0.5, 0.5);
+     glBegin(GL_LINE_STRIP);
+      for (i = 0; i <= 28; i++) 
+         glEvalCoord1f((GLfloat) i/28.0);
+     glEnd();
+   /* The following code displays the control points as dots. */
+     glPointSize(5.0);
+     glColor3f(1.0, 1.0, 0.0);
+     glBegin(GL_POINTS);
+      for (i = 0; i < 6; i++) 
+         glVertex3fv(&jpts[i][0]);
+     glEnd();
+  glPopMatrix();
+}
+
+void pintaG()
+{
+  int i;
+  glPushMatrix();
+    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 8, &gpts[0][0]);
+    getColor();
+    glScalef(0.2, 0.5, 0.5);
+     glBegin(GL_LINE_STRIP);
+      for (i = 0; i <= 28; i++) 
+         glEvalCoord1f((GLfloat) i/28.0);
+     glEnd();
+   /* The following code displays the control points as dots. */
+     glPointSize(5.0);
+     glColor3f(1.0, 1.0, 0.0);
+     glBegin(GL_POINTS);
+      for (i = 0; i < 7; i++) 
+         glVertex3fv(&apts[i][0]);
+     glEnd();
+  glPopMatrix();
+}
+
+void pintaO()
+{
+  int i;
+  glPushMatrix();
+    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 7, &opts[0][0]);
+    getColor();
+    glScalef(0.5, 0.5, 0.5);
+     glBegin(GL_LINE_STRIP);
+      for (i = 0; i <= 28; i++) 
+         glEvalCoord1f((GLfloat) i/28.0);
+     glEnd();
+     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 2, &cejitapts[0][0]);
+    glScalef(0.5, 0.5, 0.5);
+     glBegin(GL_LINE_STRIP);
+      for (i = 0; i <= 28; i++) 
+         glEvalCoord1f((GLfloat) i/28.0);
+     glEnd();
+   /* The following code displays the control points as dots. */
+     glPointSize(5.0);
+     glColor3f(1.0, 1.0, 0.0);
+     glBegin(GL_POINTS);
+      for (i = 0; i < 6; i++) 
+         glVertex3fv(&jpts[i][0]);
+     glEnd();
+  glPopMatrix();
+}
+
+void pintaL()
+{
+  int i;
+  glPushMatrix();
+    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 6, &lpts[0][0]);
+    getColor();
+    glScalef(0.5, 0.5, 0.5);
+     glBegin(GL_LINE_STRIP);
+      for (i = 0; i <= 28; i++) 
+         glEvalCoord1f((GLfloat) i/28.0);
+     glEnd();
+   /* The following code displays the control points as dots. */
+     glPointSize(5.0);
+     glColor3f(1.0, 1.0, 0.0);
+     glBegin(GL_POINTS);
+      for (i = 0; i < 6; i++) 
+         glVertex3fv(&jpts[i][0]);
+     glEnd();
+  glPopMatrix();
+}
+
+void pintaN()
+{
+    glPushMatrix();
+        glScalef(0.5,1,1);
+        glPushMatrix();
+            pintaarco();
+            glTranslatef(2,0,0);
+            pintaarco();
+        glPopMatrix();
+    glPopMatrix();
+}
+
 
 void display(void)
 {

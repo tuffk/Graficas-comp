@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 
+// arreglos de puntos para las letras y helpers
 GLfloat jpts[4][3] = {
 	{2,4,0},{3,-10,0},{0,0,0},{3,3,0}
     };
@@ -14,7 +15,11 @@ GLfloat ipts[5][3] = {
 GLfloat arcopts[5][3] = {
 	{0,0,0},{0,2,0},{2,4,0},{4,2,0},{4,0,0}
     };
+GLfloat epts[6][3] = {
+	{0,0,0},{5,0,0},{3.5,9,0},{0.5,5,0},{0.5,-4,0},{5,0,0}
+    };
 
+// funciones de las letras y helpers
 void drawJAIME();
 void drawJUAN();
 void pintaJ();
@@ -22,6 +27,7 @@ void pintaA();
 void pintaI();
 void pintaM();
 void pintaarco();
+void pintaE();
 
 
 // GLmagick
@@ -37,7 +43,8 @@ void drawJAIME()
     //pintaJ();
     //pintaA();
     //pintaI();
-    pintaM();
+    //pintaM();
+    pintaE();
 }
 
 // J
@@ -141,7 +148,28 @@ void pintaM()
             pintaarco();
         glPopMatrix();
     glPopMatrix();
-    
+}
+
+void pintaE()
+{
+  int i;
+  glPushMatrix();
+    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 6, &epts[0][0]);
+    glColor3f(0.0, 1.0, 0.0);
+    glTranslatef(-3.0, 0.0, 0.0);
+    glScalef(0.5, 0.5, 0.5);
+     glBegin(GL_LINE_STRIP);
+      for (i = 0; i <= 28; i++) 
+         glEvalCoord1f((GLfloat) i/28.0);
+     glEnd();
+   /* The following code displays the control points as dots. */
+     glPointSize(5.0);
+     glColor3f(1.0, 1.0, 0.0);
+     glBegin(GL_POINTS);
+      for (i = 0; i < 6; i++) 
+         glVertex3fv(&jpts[i][0]);
+     glEnd();
+  glPopMatrix();
 }
 
 void display(void)

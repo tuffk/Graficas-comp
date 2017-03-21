@@ -1,5 +1,9 @@
 #include <stdlib.h>
 #include <GL/glut.h>
+#include <random>
+#include <cstdlib>
+#include <iostream>
+using namespace std;
 
 // arreglos de puntos para las letras y helpers
 GLfloat jpts[4][3] = {
@@ -21,7 +25,7 @@ GLfloat epts[6][3] = {
 
 // funciones de las letras y helpers
 void drawJAIME();
-void drawJUAN();
+void drawMARGOLIN();
 void pintaJ();
 void pintaA();
 void pintaI();
@@ -29,6 +33,14 @@ void pintaM();
 void pintaarco();
 void pintaE();
 
+
+//random colors
+void getColor()
+{
+    std::random_device rd; std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(0, 1);
+    glColor3f(dis(gen), dis(gen), dis(gen));
+}
 
 // GLmagick
 void init(void)
@@ -40,11 +52,29 @@ void init(void)
 
 void drawJAIME()
 {
-    //pintaJ();
-    //pintaA();
-    //pintaI();
-    //pintaM();
-    pintaE();
+    glPushMatrix();
+        glTranslatef(-10.0, 2.5, 0.0);
+        pintaJ();
+        glTranslatef(2.2, 0.0, 0.0);
+        pintaA();
+        glTranslatef(1.9, -0.5, 0.0);
+        pintaI();
+        glTranslatef(2.5, 0.0, 0.0);
+        pintaM();
+        glTranslatef(3.0, 0.0, 0.0);
+        pintaE();
+    glPopMatrix();
+}
+
+void drawMARGOLIN(){
+    glPushMatrix();
+        pintaM();
+        glTranslatef(4,0.5,0);
+        glPushMatrix();
+            glScalef(0.7,0.7,0.7);
+            pintaA();
+        glPopMatrix();
+    glPopMatrix();
 }
 
 // J
@@ -53,8 +83,7 @@ void pintaJ()
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 4, &jpts[0][0]);
-    glColor3f(0.0, 1.0, 0.0);
-    glTranslatef(-3.0, 0.0, 0.0);
+    getColor();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
@@ -75,8 +104,7 @@ void pintaA()
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 7, &apts[0][0]);
-    glColor3f(1.0, 1.0, 0.0);
-    glTranslatef(2.0, 0.0, 0.0);
+    getColor();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
@@ -97,8 +125,7 @@ void pintaI()
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 5, &ipts[0][0]);
-    glColor3f(1.0, 0.0, 0.5);
-    glTranslatef(2.0, 0.0, 0.0);
+    getColor();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
@@ -119,8 +146,7 @@ void pintaarco()
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 5, &arcopts[0][0]);
-    glColor3f(0.3, 0.0, 0.7);
-    glTranslatef(-3.0, 0.0, 0.0);
+    getColor();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
@@ -155,8 +181,7 @@ void pintaE()
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 6, &epts[0][0]);
-    glColor3f(0.0, 1.0, 0.0);
-    glTranslatef(-3.0, 0.0, 0.0);
+    getColor();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
@@ -178,6 +203,8 @@ void display(void)
    glClear(GL_COLOR_BUFFER_BIT);
    glColor3f(1.0, 1.0, 1.0);
    drawJAIME();
+   glTranslatef(-9.5,-2,0);
+   drawMARGOLIN();
    glFlush();
 }
 
@@ -210,8 +237,8 @@ int main(int argc, char** argv)
 {
    glutInit(&argc, argv);
    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-   glutInitWindowSize (1000, 500);
-   glutInitWindowPosition (100, 100);
+   glutInitWindowSize (1500, 700);
+   glutInitWindowPosition (00, 00);
    glutCreateWindow (argv[0]);
    init ();
    glutDisplayFunc(display);

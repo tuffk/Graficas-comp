@@ -1,69 +1,74 @@
+/* Este código es formato de c++11 asi que se debe de compilar con la bandera --std=c++11 */
+/* Se quito el dibujado de los puntos porque se veian feos en la pantalla */
 #include <stdlib.h>
 #include <GL/glut.h>
 #include <random>
 #include <cstdlib>
 #include <iostream>
+
+//porque que flojera estar escribiendo std::
 using namespace std;
 
-// arreglos de puntos para las letras y helpers
+// definicion de los puntos que se utilizarán en cada letra
+// puntos para la j
 GLfloat jpts[4][3] = {
 	{2,4,0},{3,-10,0},{0,0,0},{3,3,0}
     };
+//puntos para la a
 GLfloat apts[7][3] = {
 	{ 2.0, 1.0, 0.0}, { 2.0, 3.0, 0.0}, 
 	{-4.8, 3.0, 0.0}, {-4.8, -4.0, 0.0},
     {2.0, -4.0, 0.0}, {2.0, 8.0, 0.0}, {3.0, -2.0, 0.0}};
-GLfloat ipts[5][3] = {
-	{0,0,0},{5,0,0},{2.5,9,0},{3.5,-4,0},{5,0,0}
-    };
+// puntos para los arcos de u y n
 GLfloat arcopts[5][3] = {
 	{0,0,0},{0,2,0},{2,4,0},{4,2,0},{4,0,0}
     };
+// puntos para el palito de la n
+GLfloat arquinpts[5][3] = {
+	{0.0,1.5,0},{0,2,0},{2,4,0},{4,2,0},{4,0,0}
+    };
+//puntos para la e
 GLfloat epts[6][3] = {
 	{0,0,0},{5,0,0},{3.5,9,0},{0.5,5,0},{0.5,-4,0},{5,0,0}
     };
-GLfloat rpts[5][3] = {
-	{0,5,0},{0,0,0},{1,3,0},{2,5,0},{5,5,0}
-    };
-GLfloat gpts[8][3] = {
-	{ 2.0, 1.0, 0.0}, { 2.0, 3.0, 0.0}, 
-	{-4.8, 3.0, 0.0}, {-4.8, -4.0, 0.0},
-    {2.0, -4.0, 0.0}, {2.0, 8.0, 0.0}, {3.0, -2.0, 0.0},{2,-6,0}
-        };
+// puntos para la o
 GLfloat opts[7][3] = {
-	{0,0,0},{-1.5,-1.5,0.0},{-3,-3,0},{0,-4,0},{3,-3,0},{1.5,-1.5,0.0},{0,0,0}
+	{0,0,0},{-1.5,0.0,0.0},{-1.5,-3,0},{0,-5,0},{3,-3,0},{1.5,0.0,0.0},{0,0,0}
     };
+// puntos para el palito de la o
 GLfloat cejitapts[2][3] = {
 	{0,0,0},{2,0,0}
     };
+// puntos para la l
 GLfloat lpts[6][3] = {
 	{0,0,0},{5,0,0},{3.5,18,0},{0.5,5,0},{0.5,-4,0},{5,0,0}
     };
 
-// funciones de las letras y helpers
-void drawJAIME();
-void drawMARGOLIN();
-void pintaJ();
-void pintaA();
-void pintaI();
-void pintaM();
-void pintaarco();
-void pintaE();
-void pintaR();
-void pintaG();
-void pintaO();
-void pintaL();
-void pintaN();
+// funciones que dibujan los nombres
+void dibujaJUAN();
+void dibujaLEON();
 
-//random colors
-void getColor()
+// funciones que dibujan las letras
+void dibujaJ();
+void dibujaarco();
+void dibujaarquin();
+void dibujaA();
+void dibujaN();
+void dibujaL();
+void dibujaE();
+void dibujaO();
+
+// funcion para generar los colores aleatorios en cada corrida,
+// es estandar c++11, por lo tanto se debe correr con el flag:
+// --std=c++11
+void zain()
 {
     std::random_device rd; std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0, 1);
     glColor3f(dis(gen), dis(gen), dis(gen));
 }
 
-// GLmagick
+// inicializacion
 void init(void)
 {
    glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -71,216 +76,121 @@ void init(void)
    glEnable(GL_MAP1_VERTEX_3);
 }
 
-void drawJAIME()
+//funcion que dibuja juan
+void dibujaJUAN()
 {
     glPushMatrix();
         glTranslatef(-10.0, 2.5, 0.0);
-        pintaJ();
-        glTranslatef(2.2, 0.0, 0.0);
-        pintaA();
-        glTranslatef(1.9, -0.5, 0.0);
-        pintaI();
-        glTranslatef(2.5, 0.0, 0.0);
-        pintaM();
-        glTranslatef(3.0, 0.0, 0.0);
-        pintaE();
+        dibujaJ();
+        glTranslatef(1.8, 0.0, 0.0);
+        glPushMatrix();
+            glScalef(1.0,-1.0,1.0);
+            dibujaarco();
+        glPopMatrix();
+        glTranslatef(3.0, -0.5, 0.0);
+        glPushMatrix();
+            glScalef(0.7, 0.7, 0.7);
+            dibujaA();
+        glTranslatef(1.5, -0.5, 0.0);
+        dibujaN();
     glPopMatrix();
 }
 
-void drawMARGOLIN(){
+//funcion que dibuja leon
+void dibujaLEON(){
     glPushMatrix();
-        pintaM();
-        glTranslatef(4,0.5,0);
-        glPushMatrix();
-            glScalef(0.7,0.7,0.7);
-            pintaA();
-        glPopMatrix();
-        glPushMatrix();
-            glTranslatef(1.7,-1.7,0);
-            glScalef(0.2,1,1);
-            pintaR();
-        glPopMatrix();
-        glTranslatef(3,0,0);
-        pintaG();
-        glTranslatef(1.5,0.7,0);
-        pintaO();
-        glTranslatef(0.5,-2,0);
-        pintaL();
-        glTranslatef(1.9, 0, 0.0);
-        pintaI();
-        glTranslatef(2.5, 0, 0.0);
-        pintaN();
+        dibujaL();
+        glTranslatef(2.2,0.0,0);
+        dibujaE();
+        glTranslatef(3.2,1.0,0);
+        dibujaO();
+        glTranslatef(0.71,-1.2,0);
+        dibujaN();
     glPopMatrix();
 }
 
-// J
-void pintaJ()
+// dibuja la J
+void dibujaJ()
 {
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 4, &jpts[0][0]);
-    getColor();
+    zain();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
          glEvalCoord1f((GLfloat) i/28.0);
      glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 6; i++) 
-         glVertex3fv(&jpts[i][0]);
-     glEnd();
   glPopMatrix();
 }
 
-void pintaA()
+// dibuja la a de moy
+void dibujaA()
 {
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 7, &apts[0][0]);
-    getColor();
+    zain();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
          glEvalCoord1f((GLfloat) i/28.0);
      glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 7; i++) 
-         glVertex3fv(&apts[i][0]);
-     glEnd();
   glPopMatrix();
 }
 
-void pintaI()
-{
-  int i;
-  glPushMatrix();
-    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 5, &ipts[0][0]);
-    getColor();
-    glScalef(0.5, 0.5, 0.5);
-     glBegin(GL_LINE_STRIP);
-      for (i = 0; i <= 28; i++) 
-         glEvalCoord1f((GLfloat) i/28.0);
-     glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 7; i++) 
-         glVertex3fv(&apts[i][0]);
-     glEnd();
-  glPopMatrix();
-}
-
-void pintaarco()
+// dibuja un arco para la n y para la u
+void dibujaarco()
 {
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 5, &arcopts[0][0]);
-    getColor();
+    zain();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
          glEvalCoord1f((GLfloat) i/28.0);
      glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 6; i++) 
-         glVertex3fv(&jpts[i][0]);
+  glPopMatrix();
+}
+
+// dibuja el palito de la n
+void dibujaarquin()
+{
+  int i;
+  glPushMatrix();
+    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 5, &arquinpts[0][0]);
+    zain();
+    glScalef(0.5, 0.5, 0.5);
+     glBegin(GL_LINE_STRIP);
+      for (i = 0; i <= 28; i++) 
+         glEvalCoord1f((GLfloat) i/28.0);
      glEnd();
   glPopMatrix();
 }
 
-void pintaM()
-{
-    glPushMatrix();
-        glScalef(0.5,1,1);
-        glPushMatrix();
-            pintaarco();
-            glTranslatef(2,0,0);
-            pintaarco();
-            glTranslatef(2,0,0);
-            pintaarco();
-        glPopMatrix();
-    glPopMatrix();
-}
-
-void pintaE()
+//funcion que dibuja la e
+void dibujaE()
 {
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 6, &epts[0][0]);
-    getColor();
+    zain();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
          glEvalCoord1f((GLfloat) i/28.0);
      glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 6; i++) 
-         glVertex3fv(&jpts[i][0]);
-     glEnd();
   glPopMatrix();
 }
 
-void pintaR()
-{
-  int i;
-  glPushMatrix();
-    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 5, &rpts[0][0]);
-    getColor();
-    glScalef(0.5, 0.5, 0.5);
-     glBegin(GL_LINE_STRIP);
-      for (i = 0; i <= 28; i++) 
-         glEvalCoord1f((GLfloat) i/28.0);
-     glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 6; i++) 
-         glVertex3fv(&jpts[i][0]);
-     glEnd();
-  glPopMatrix();
-}
-
-void pintaG()
-{
-  int i;
-  glPushMatrix();
-    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 8, &gpts[0][0]);
-    getColor();
-    glScalef(0.2, 0.5, 0.5);
-     glBegin(GL_LINE_STRIP);
-      for (i = 0; i <= 28; i++) 
-         glEvalCoord1f((GLfloat) i/28.0);
-     glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 7; i++) 
-         glVertex3fv(&apts[i][0]);
-     glEnd();
-  glPopMatrix();
-}
-
-void pintaO()
+//funcion que dibuja la o
+void dibujaO()
 {
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 7, &opts[0][0]);
-    getColor();
+    zain();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
@@ -292,61 +202,49 @@ void pintaO()
       for (i = 0; i <= 28; i++) 
          glEvalCoord1f((GLfloat) i/28.0);
      glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 6; i++) 
-         glVertex3fv(&jpts[i][0]);
-     glEnd();
   glPopMatrix();
 }
 
-void pintaL()
+//funcion que dibuja la l
+void dibujaL()
 {
   int i;
   glPushMatrix();
     glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 6, &lpts[0][0]);
-    getColor();
+    zain();
     glScalef(0.5, 0.5, 0.5);
      glBegin(GL_LINE_STRIP);
       for (i = 0; i <= 28; i++) 
          glEvalCoord1f((GLfloat) i/28.0);
      glEnd();
-   /* The following code displays the control points as dots. */
-     glPointSize(5.0);
-     glColor3f(1.0, 1.0, 0.0);
-     glBegin(GL_POINTS);
-      for (i = 0; i < 6; i++) 
-         glVertex3fv(&jpts[i][0]);
-     glEnd();
   glPopMatrix();
 }
 
-void pintaN()
+//dibuja la n
+void dibujaN()
 {
     glPushMatrix();
         glScalef(0.5,1,1);
         glPushMatrix();
-            pintaarco();
+            dibujaarquin();
             glTranslatef(2,0,0);
-            pintaarco();
+            dibujaarco();
         glPopMatrix();
     glPopMatrix();
 }
 
-
+//funcion que hace el render de la app
 void display(void)
 {
-
    glClear(GL_COLOR_BUFFER_BIT);
    glColor3f(1.0, 1.0, 1.0);
-   drawJAIME();
-   glTranslatef(-9.5,-2,0);
-   drawMARGOLIN();
+   dibujaJUAN();
+   glTranslatef(-4.8,-5,0);
+   dibujaLEON();
    glFlush();
 }
 
+// otra funcion más de las de siempre
 void reshape(int w, int h)
 {
    glViewport(0, 0, (GLsizei) w, (GLsizei) h);
@@ -372,6 +270,7 @@ void keyboard(unsigned char key, int x, int y)
    }
 }
 
+// funcion que renderea la pantalla y todo eso
 int main(int argc, char** argv)
 {
    glutInit(&argc, argv);
@@ -379,7 +278,7 @@ int main(int argc, char** argv)
    glutInitWindowSize (1500, 700);
    glutInitWindowPosition (00, 00);
    glutCreateWindow (argv[0]);
-   init ();
+   init();
    glutDisplayFunc(display);
    glutReshapeFunc(reshape);
    glutKeyboardFunc (keyboard);

@@ -1,3 +1,4 @@
+// includes
 #include <stdlib.h>
 #include <GL/glut.h>
 #include <random>
@@ -58,9 +59,9 @@ void pintaN();
 //random colors
 void getColor()
 {
-    std::random_device rd; std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(0, 1);
-    glColor3f(dis(gen), dis(gen), dis(gen));
+    std::random_device rd; std::mt19937 gen(rd());// random number 
+    std::uniform_real_distribution<> dis(0, 1);// entre 0 y 1
+    glColor3f(dis(gen), dis(gen), dis(gen)); // asigarlo al color
 }
 
 // GLmagick
@@ -71,6 +72,7 @@ void init(void)
    glEnable(GL_MAP1_VERTEX_3);
 }
 
+// pinta mi nombre
 void drawJAIME()
 {
     glPushMatrix();
@@ -87,6 +89,7 @@ void drawJAIME()
     glPopMatrix();
 }
 
+// pintar apellido
 void drawMARGOLIN(){
     glPushMatrix();
         pintaM();
@@ -135,6 +138,7 @@ void pintaJ()
   glPopMatrix();
 }
 
+// A
 void pintaA()
 {
   int i;
@@ -156,6 +160,7 @@ void pintaA()
   glPopMatrix();
 }
 
+// I
 void pintaI()
 {
   int i;
@@ -177,6 +182,7 @@ void pintaI()
   glPopMatrix();
 }
 
+// helper para M y N
 void pintaarco()
 {
   int i;
@@ -198,6 +204,7 @@ void pintaarco()
   glPopMatrix();
 }
 
+// M
 void pintaM()
 {
     glPushMatrix();
@@ -212,6 +219,7 @@ void pintaM()
     glPopMatrix();
 }
 
+// E
 void pintaE()
 {
   int i;
@@ -233,6 +241,7 @@ void pintaE()
   glPopMatrix();
 }
 
+// R
 void pintaR()
 {
   int i;
@@ -254,6 +263,7 @@ void pintaR()
   glPopMatrix();
 }
 
+// G
 void pintaG()
 {
   int i;
@@ -275,6 +285,7 @@ void pintaG()
   glPopMatrix();
 }
 
+// O Y SU GORRO
 void pintaO()
 {
   int i;
@@ -302,6 +313,7 @@ void pintaO()
   glPopMatrix();
 }
 
+// L
 void pintaL()
 {
   int i;
@@ -323,6 +335,7 @@ void pintaL()
   glPopMatrix();
 }
 
+// N
 void pintaN()
 {
     glPushMatrix();
@@ -335,7 +348,7 @@ void pintaN()
     glPopMatrix();
 }
 
-
+// mas gl magic
 void display(void)
 {
 
@@ -347,6 +360,7 @@ void display(void)
    glFlush();
 }
 
+// gl magic 3.0
 void reshape(int w, int h)
 {
    glViewport(0, 0, (GLsizei) w, (GLsizei) h);
@@ -362,7 +376,7 @@ void reshape(int w, int h)
    glLoadIdentity();
 }
 
-/* ARGSUSED1 */
+/* Ateclado magic */
 void keyboard(unsigned char key, int x, int y)
 {
    switch (key) {
@@ -372,6 +386,7 @@ void keyboard(unsigned char key, int x, int y)
    }
 }
 
+// cazeria de elefantes
 int main(int argc, char** argv)
 {
    glutInit(&argc, argv);

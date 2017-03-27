@@ -75,6 +75,42 @@ initlights(void)
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
 }
 
+void drawCube(float x, float y, float z) 
+    {
+    glBegin(GL_QUADS); 
+    glVertex3f(-1.0f+x, -1.0f+y, -1.0f+z);
+    glVertex3f(1.0f+x, -1.0f+y, -1.0f+z);
+    glVertex3f(1.0f+x, 1.0f+y, -1.0f+z);
+    glVertex3f(-1.0f+x, 1.0f+y, -1.0f+z);
+
+    glVertex3f(-1.0f+x, -1.0f+y, -1.0f+z);
+    glVertex3f(-1.0f+x, -1.0f+y, 1.0f+z);
+    glVertex3f(-1.0f+x, 1.0f+y, -1.0f+z);
+    glVertex3f(-1.0f+x, 1.0f+y, 1.0f+z);
+
+    glVertex3f(-1.0f+x, -1.0f+y, -1.0f+z);
+    glVertex3f(-1.0f+x, -1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, -1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, -1.0f+y, -1.0f+z);
+
+    glVertex3f(-1.0f+x, -1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, -1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, 1.0f+y, 1.0f+z);
+    glVertex3f(-1.0f+x, 1.0f+y, 1.0f+z);
+
+    glVertex3f(-1.0f+x, -1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, -1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, 1.0f+y, 1.0f+z);
+    glVertex3f(-1.0f+x, 1.0f+y, 1.0f+z);
+
+    glVertex3f(-1.0f+x, 1.0f+y, -1.0f+z);
+    glVertex3f(-1.0f+x, 1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, 1.0f+y, 1.0f+z);
+    glVertex3f(1.0f+x, 1.0f+y, -1.0f+z);
+
+    glEnd();
+     }
+
 void 
 display(void)
 {
@@ -82,7 +118,8 @@ display(void)
     glPushMatrix();
         glRotatef(-50.0, 1.0, 0.0, 0.0);
         glRotatef(10.0, 0.0, 1.0, 0.0);
-        glEvalMesh2(GL_FILL, 0, 25, 0, 25);
+       // glEvalMesh2(GL_FILL, 0, 25, 0, 25);
+       drawCube(0,0,0);
     glPopMatrix();
     glFlush();
 }

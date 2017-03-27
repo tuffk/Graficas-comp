@@ -161,6 +161,7 @@ main(int argc, char** argv)
     myinit();
     glutReshapeFunc(reshape);
     glutDisplayFunc(display);
+    // le menu
     glutCreateMenu(menu);
     glutAddMenuEntry("Show control points", 1);
     glutAddMenuEntry("Hide control points", 0);

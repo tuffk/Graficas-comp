@@ -4,6 +4,7 @@ GLfloat ctlpoints[4][4][3];
 int showPoints = 0;
 
 GLUnurbsObj *theNurb;
+float angX=0, angY=0;
 
 /*
  *  Initializes the control points of the surface to a small hill.
@@ -13,15 +14,17 @@ void init_surface(void)
 {
     int u, v;
     for (u = 0; u < 4; u++) {
-	for (v = 0; v < 4; v++) {
-	    ctlpoints[u][v][0] = 2.0*((GLfloat)u - 1.5);
-	    ctlpoints[u][v][1] = 2.0*((GLfloat)v - 1.5);
+        for (v = 0; v < 4; v++) {
+            ctlpoints[u][v][0] = 2.0*((GLfloat)u - 1.5);
+            ctlpoints[u][v][1] = 2.0*((GLfloat)v - 1.5);
 
-	    if ( (u == 1 || u == 2) && (v == 1 || v == 2))
-		ctlpoints[u][v][2] = 7.0;
-	    else
-		ctlpoints[u][v][2] = -3.0;
-	}
+            if ( (u == 1 || u == 2) && (v == 1 || v == 2))
+                ctlpoints[u][v][2] = 3.0;
+            // else if (u == 0 || v== 0)
+            //     ctlpoints[u][v][2] = -0.0;
+            else
+             ctlpoints[u][v][2] = -0.0;
+        }
     }				
 }				
 			
@@ -64,34 +67,36 @@ void display(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glPushMatrix();
-    glRotatef(330.0, 1.,0.,0.);
-    glScalef (0.25, 0.25, 0.25);
+        glRotatef(angX, 1, 0, 0);
+        glRotatef(angY, 0, 1, 0);
+        glRotatef(330.0, 1.,0.,0.);
+        glScalef (0.25, 0.25, 0.25);
 
-    gluBeginSurface(theNurb);
-    gluNurbsSurface(theNurb, 
-	    8, knots,
-	    8, knots,
-	    4 * 3,
-	    3,
-	    &ctlpoints[0][0][0], 
-	    4, 4,
-	    GL_MAP2_VERTEX_3);
-    gluEndSurface(theNurb);
+        gluBeginSurface(theNurb);
+            gluNurbsSurface(theNurb, 
+                8, knots,
+                8, knots,
+                4 * 3, //cantidad de puntos para ir saltando 
+                3, // cantidad de valores zyx
+                &ctlpoints[0][0][0], 
+                4, 4, // cnaitdad de puntos en v y u
+                GL_MAP2_VERTEX_3);// tipo de mapa y vertices
+        gluEndSurface(theNurb);
 
-    if(showPoints) {
-    glPointSize(5.0);
-    glDisable(GL_LIGHTING);
-    glColor3f(1.0, 1.0, 0.0);
-    glBegin(GL_POINTS);
-    for(i=0;i<4;i++) {
-      for(j=0;j<4;j++) {
-	glVertex3f(ctlpoints[i][j][0], ctlpoints[i][j][1], ctlpoints[i][j][2]);
-      }
-    }
-    glEnd();
-    glEnable(GL_LIGHTING);
-    }
-        
+        if(showPoints) {
+            glPointSize(5.0);
+            glDisable(GL_LIGHTING);
+            glColor3f(1.0, 1.0, 0.0);
+            glBegin(GL_POINTS);
+            for(i=0;i<4;i++) {
+                for(j=0;j<4;j++) {
+                    glVertex3f(ctlpoints[i][j][0], ctlpoints[i][j][1], ctlpoints[i][j][2]);
+                    }
+            }
+            glEnd();
+            glEnable(GL_LIGHTING);
+        }
+            
     glPopMatrix();
     glutSwapBuffers();
 }
@@ -124,15 +129,15 @@ menu(int value)
     glutPostRedisplay();
 }
 
-int down = 0, lastx;
+int down = 0, lastx, lasty;
 
 /* ARGSUSED1 */
 void
 motion(int x, int y)
 {
     if (down) {
-        glRotatef(lastx - x, 0, 1, 0);
-        lastx = x;
+        angX = lasty - y;
+        angY = (lastx - x);
         glutPostRedisplay();
     }
 }

@@ -1,6 +1,6 @@
 #include <GL/glut.h>
 
-GLfloat ctlpoints[4][4][3], points2[4][4][3];
+GLfloat ctlpoints[4][4][3], points2[3][3][3];
 int showPoints = 0;
 
 GLUnurbsObj *theNurb, *nurb2;
@@ -31,19 +31,20 @@ void init_surface(void)
 void init_surface2(void)
 {
     int u, v;
-    for (u = 0; u < 4; u++) {
-        for (v = 0; v < 4; v++) {
+    for (u = 0; u < 3; u++) {
+        for (v = 0; v < 3; v++) {
             points2[u][v][0] = 2.0*((GLfloat)u - 1.5);
             points2[u][v][1] = 2.0*((GLfloat)v - 1.5);
 
-            if ( (u == 1 || u == 2) && (v == 1 || v == 2))
-                points2[u][v][2] = -3.0;
+            // if ( (u == 1 || u == 2) && (v == 1 || v == 2))
+            //     points2[u][v][2] = 0.0;
             // else if (u == 0 || v== 0)
-            //     ctlpoints[u][v][2] = -0.0;
-            else
-             points2[u][v][2] = -0.0;
+            //     points2[u][v][2] = -0.0;
+            // else
+            //  points2[u][v][2] = -0.0;
         }
-    }				
+    }	
+    points2[1][1][2] = -3;
 }				
 			
 /*  Initialize material property and depth buffer.
@@ -88,7 +89,7 @@ void myinit(void)
 
 void display(void)
 {
-    GLfloat knots[8] = {0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0},knots2[8] = {0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0};
+    GLfloat knots[8] = {0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0},knots2[6] = {0.0, 0.0, 0.0, 1.0, 2.0, 3.0};
     int i, j;
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -99,41 +100,44 @@ void display(void)
         glRotatef(330.0, 1.,0.,0.);
         glScalef (0.25, 0.25, 0.25);
 
-        gluBeginSurface(theNurb);
-            gluNurbsSurface(theNurb, 
-                8, knots,
-                8, knots,
-                4 * 3, //cantidad de puntos para ir saltando 
-                3, // cantidad de valores zyx
-                &ctlpoints[0][0][0], 
-                4, 4, // cnaitdad de puntos en v y u
-                GL_MAP2_VERTEX_3);// tipo de mapa y vertices
-        gluEndSurface(theNurb);
-
-        //     gluBeginSurface(nurb2);
-        //     gluNurbsSurface(nurb2, 
-        //         8, knots2,
-        //         8, knots2,
+        // gluBeginSurface(theNurb);
+        //     gluNurbsSurface(theNurb, 
+        //         8, knots,
+        //         8, knots,
         //         4 * 3, //cantidad de puntos para ir saltando 
         //         3, // cantidad de valores zyx
-        //         &points2[0][0][0], 
+        //         &ctlpoints[0][0][0], 
         //         4, 4, // cnaitdad de puntos en v y u
         //         GL_MAP2_VERTEX_3);// tipo de mapa y vertices
-        // gluEndSurface(nurb2);
+        // gluEndSurface(theNurb);
 
         glPushMatrix();
-            glScalef(-1,-1,-1);
-            gluBeginSurface(theNurb);
-            gluNurbsSurface(theNurb, 
-                8, knots,
-                8, knots,
-                4 * 3, //cantidad de puntos para ir saltando 
+            glScalef(2,2,2);
+            gluBeginSurface(nurb2);
+            gluNurbsSurface(nurb2, 
+                6, knots2,
+                6, knots2,
+                3 * 3, //cantidad de puntos para ir saltando 
                 3, // cantidad de valores zyx
-                &ctlpoints[0][0][0], 
-                4, 4, // cnaitdad de puntos en v y u
+                &points2[0][0][0], 
+                3, 3, // cnaitdad de puntos en v y u
                 GL_MAP2_VERTEX_3);// tipo de mapa y vertices
-        gluEndSurface(theNurb);
+            gluEndSurface(nurb2);
         glPopMatrix();
+
+        // glPushMatrix();
+        //     glScalef(-1,-1,-1);
+        //     gluBeginSurface(theNurb);
+        //     gluNurbsSurface(theNurb, 
+        //         8, knots,
+        //         8, knots,
+        //         4 * 3, //cantidad de puntos para ir saltando 
+        //         3, // cantidad de valores zyx
+        //         &ctlpoints[0][0][0], 
+        //         4, 4, // cnaitdad de puntos en v y u
+        //         GL_MAP2_VERTEX_3);// tipo de mapa y vertices
+        // gluEndSurface(theNurb);
+        // glPopMatrix();
         
 
         if(showPoints) {

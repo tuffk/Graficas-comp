@@ -46,12 +46,15 @@ void init_surface2(void)
     }	
     points2[1][1][2] = -3;
     //points2[0][0][2] = -2;
-}				
+}
+
+			
 			
 /*  Initialize material property and depth buffer.
  */
 void myinit(void)
 {
+
     GLfloat mat_diffuse[] = { 0.7, 0.7, 0.7, 1.0 };
     GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_shininess[] = { 100.0 };
@@ -98,9 +101,8 @@ void display(void)
     glPushMatrix();
         glRotatef(angX, 1, 0, 0);
         glRotatef(angY, 0, 1, 0);
-        //glRotatef(330.0, 1.,0.,0.);
+        glRotatef(330.0, 1.,0.,0.);
         glScalef (0.25, 0.25, 0.25);
-        glScalef (1,1,-1);
 
         // gluBeginSurface(theNurb);
         //     gluNurbsSurface(theNurb, 
@@ -114,7 +116,7 @@ void display(void)
         // gluEndSurface(theNurb);
 
         glPushMatrix();
-            glScalef(2,2,2);
+            //glScalef(2,2,2);
             gluBeginSurface(nurb2);
             gluNurbsSurface(nurb2, 
                 6, knots2,
@@ -127,49 +129,49 @@ void display(void)
             gluEndSurface(nurb2);
         glPopMatrix();
         // agrandado le nurb a nurb*2
-        glPushMatrix();
-            glTranslatef(8,0,0);
-            glScalef(2,2,2);
-            gluBeginSurface(nurb2);
-            gluNurbsSurface(nurb2, 
-                6, knots2,
-                6, knots2,
-                3 * 3, //cantidad de puntos para ir saltando 
-                3, // cantidad de valores zyx
-                &points2[0][0][0], 
-                3, 3, // cnaitdad de puntos en v y u
-                GL_MAP2_VERTEX_3);// tipo de mapa y vertices
-            gluEndSurface(nurb2);
-        glPopMatrix();
-
         // glPushMatrix();
-        //     glScalef(-1,-1,-1);
-        //     gluBeginSurface(theNurb);
-        //     gluNurbsSurface(theNurb, 
-        //         8, knots,
-        //         8, knots,
-        //         4 * 3, //cantidad de puntos para ir saltando 
+        //     glTranslatef(8,0,0);
+        //     glScalef(2,2,2);
+        //     gluBeginSurface(nurb2);
+        //     gluNurbsSurface(nurb2, 
+        //         6, knots2,
+        //         6, knots2,
+        //         3 * 3, //cantidad de puntos para ir saltando 
         //         3, // cantidad de valores zyx
-        //         &ctlpoints[0][0][0], 
-        //         4, 4, // cnaitdad de puntos en v y u
+        //         &points2[0][0][0], 
+        //         3, 3, // cnaitdad de puntos en v y u
         //         GL_MAP2_VERTEX_3);// tipo de mapa y vertices
-        // gluEndSurface(theNurb);
+        //     gluEndSurface(nurb2);
         // glPopMatrix();
+
+        glPushMatrix();
+            glScalef(-1,-1,-1);
+            gluBeginSurface(theNurb);
+            gluNurbsSurface(theNurb, 
+                8, knots,
+                8, knots,
+                4 * 3, //cantidad de puntos para ir saltando 
+                3, // cantidad de valores zyx
+                &ctlpoints[0][0][0], 
+                4, 4, // cnaitdad de puntos en v y u
+                GL_MAP2_VERTEX_3);// tipo de mapa y vertices
+        gluEndSurface(theNurb);
+        glPopMatrix();
         
 
-        // if(showPoints) {
-        //     glPointSize(5.0);
-        //     glDisable(GL_LIGHTING);
-        //     glColor3f(1.0, 1.0, 0.0);
-        //     glBegin(GL_POINTS);
-        //     for(i=0;i<4;i++) {
-        //         for(j=0;j<4;j++) {
-        //             glVertex3f(ctlpoints[i][j][0], ctlpoints[i][j][1], ctlpoints[i][j][2]);
-        //             }
-        //     }
-        //     glEnd();
-        //     glEnable(GL_LIGHTING);
-        // }
+        if(showPoints) {
+            glPointSize(5.0);
+            glDisable(GL_LIGHTING);
+            glColor3f(1.0, 1.0, 0.0);
+            glBegin(GL_POINTS);
+            for(i=0;i<4;i++) {
+                for(j=0;j<4;j++) {
+                    glVertex3f(ctlpoints[i][j][0], ctlpoints[i][j][1], ctlpoints[i][j][2]);
+                    }
+            }
+            glEnd();
+            glEnable(GL_LIGHTING);
+        }
         
         //for control points 2
         if(showPoints) {
@@ -262,7 +264,7 @@ main(int argc, char** argv)
     glutAddMenuEntry("Solid", 2);
     glutAddMenuEntry("Wireframe", 3);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
-    //glutMouseFunc(mouse);
+    glutMouseFunc(mouse);
     glutMotionFunc(motion);
     glutMainLoop();
     return 0;             /* ANSI C requires main to return int. */

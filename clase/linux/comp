@@ -1,1 +1,1 @@
-g++ -o shaders *.cpp -lGL -lGLU -lglut -lGLEW
+g++ -o shaders *.cpp -lGL -lGLU -lglut -lGLEW -w

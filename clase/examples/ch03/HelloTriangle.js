@@ -9,7 +9,7 @@ var VSHADER_SOURCE =
 // Fragment shader program
 var FSHADER_SOURCE =
   'void main() {\n' +
-  '  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n' +
+  '  gl_FragColor = vec4(0.0, 1.0, 1.0, 1.0);\n' +
   '}\n';
 
 function main() {
@@ -37,7 +37,7 @@ function main() {
   }
 
   // Specify the color for clearing <canvas>
-  gl.clearColor(0, 0, 0, 1);
+  gl.clearColor(0, 1, 0, 1);
 
   // Clear <canvas>
   gl.clear(gl.COLOR_BUFFER_BIT);
@@ -48,7 +48,7 @@ function main() {
 
 function initVertexBuffers(gl) {
   var vertices = new Float32Array([
-    0, 0.5,   -0.5, -0.5,   0.5, -0.5
+    0.5, 0.8,   -0.9, -0.4,   0.7, -0.2
   ]);
   var n = 3; // The number of vertices
 

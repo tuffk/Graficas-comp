@@ -99,55 +99,10 @@ void DrawAxis(float scale);
 void HelpDisplay(GLint ww, GLint wh);
 void HelpRenderBitmapString(float x, float y, void *font, char *string);
 void loadWallFloor(void);
-void loadAlice(void);
-void loadCrazyLivingRoom(void);
-void loadHeartQueen(void);
-void loadPrincessRoom(void);
-void room(void);
-void drawAlice(void);
+void loadobj(void);
 void drawcrazyLR(void);
-void drawQueenRoom(void);
-void drawPrincessRoom(void);
-void drawCards(void);
-void drawSpades(void);
-void drawHearts(void);
 
-
-
-
-void loadobj() {
-  pmodel7 = glmReadOBJ("../tarea6/files/couch.obj");
-  glmUnitize(pmodel7);
-  glmVertexNormals(pmodel7, 90.0, GL_TRUE);
-  mode7 = glmList(pmodel7, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
-
-  pmodel8 = glmReadOBJ("../tarea6/files/armchair2.obj");
-  glmUnitize(pmodel8);
-  glmVertexNormals(pmodel8, 90.0, GL_TRUE);
-  mode8 = glmList(pmodel8, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
-
-  pmodel9 = glmReadOBJ("../tarea6/files/carrito-de-madera.obj");
-  glmUnitize(pmodel9);
-  glmVertexNormals(pmodel9, 90.0, GL_TRUE);
-  mode9 = glmList(pmodel9, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
-
-  pmodel10 = glmReadOBJ("../tarea6/files/deskLamp1.obj");
-  glmUnitize(pmodel10);
-  glmVertexNormals(pmodel10, 90.0, GL_TRUE);
-  mode10 = glmList(pmodel10, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
-
-  pmodel11 = glmReadOBJ("../tarea6/files/tableGnome.obj");
-  glmUnitize(pmodel11);
-  glmVertexNormals(pmodel11, 90.0, GL_TRUE);
-  mode11 = glmList(pmodel11, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
-
-  pmodel12 = glmReadOBJ("../tarea6/files/tavolino.obj");
-  glmUnitize(pmodel12);
-  glmVertexNormals(pmodel12, 90.0, GL_TRUE);
-  mode12 = glmList(pmodel12, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
-}
-
-
+static GLuint cubeList;
 
 void Reshape(int w, int h) {
   glViewport(0, 0, w, h);
@@ -659,6 +614,11 @@ void Display(void) {
     glDisable(GL_LIGHT0);
   }
 
+    GLfloat mat_solid[] = { 0.75, 0.75, 0.0, 1.0 };
+    GLfloat mat_zero[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_transparent[] = { 0.0, 0.8, 0.8, 0.6 };
+    GLfloat mat_emission[] = { 0.0, 0.3, 0.3, 0.6 };
+
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glPushMatrix();
     glLoadIdentity();
@@ -672,6 +632,19 @@ void Display(void) {
     else                                         /* else */
       glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); /* draw filled polygons */
 
+      glPushMatrix ();
+      glTranslatef (0.15, 0.15, -8.0);
+      glRotatef (15.0, 1.0, 1.0, 0.0);
+      glRotatef (30.0, 0.0, 1.0, 0.0);
+      glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
+      glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_transparent);
+      glEnable (GL_BLEND);
+      glDepthMask (GL_FALSE);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE);
+      glCallList (cubeList);
+      glDepthMask (GL_TRUE);
+      glDisable (GL_BLEND);
+   glPopMatrix ();
    
   glPopMatrix();
 
@@ -680,62 +653,80 @@ void Display(void) {
 
   glutSwapBuffers();
 }
-/*
-void drawcrazyLR() {
-  /*sillon*
-  glPushMatrix();
-    glRotatef(70, 0, 1, 0);
-    glRotatef(180,1,0,0);
-    glTranslatef(-.4, -1, 1.7);
-    glScalef(.8, .8, .8);
-    glCallList(mode7);
-  glPopMatrix();
 
-  /*armchair*
-  glPushMatrix();
-    glTranslatef(0, .45, -.4);
-    glScalef(.71, .71, .71);
-    glRotatef(90,1,0,0);
-    glCallList(mode8);
-  glPopMatrix();
-  /*lamp*
-  glPushMatrix();
-    glTranslatef(0, 0.1, 1);
-    glScalef(.5, .5, .5);
-    glCallList(mode10);
-  glPopMatrix();
 
-  /*carrito*
-  glPushMatrix();
-    glTranslatef(2, .70, -.5);
-    glRotatef(180, 0, 1, 0);
-    glScalef(.5, .5, .5);
-    glCallList(mode9);
-  glPopMatrix();
+void loadWallFloor() {
+  wall = glmReadOBJ("../tarea6/files/wall.obj");
+  glmUnitize(wall);
+  glmVertexNormals(wall, 90.0, GL_TRUE);
+  modeWall =
+      glmList(wall, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 
-  /*gnome*
-  glPushMatrix();
-    glRotatef(45,1,0,0);
-    glTranslatef(0,1.7,-1);
-    glScalef(0.5,0.5,0.5);
-    glCallList(mode11);
-  glPopMatrix();
-
-  /*mesa*
-  glPushMatrix();
-    glTranslatef(2.13,.7,1.3);
-    glRotatef(90,0,0,1);
-    glScalef(4,4,4);
-    glCallList(mode12);
-  glPopMatrix();
-
-  /*barajas theme*
-  drawCards();
-  drawHearts();
+  piso = glmReadOBJ("../tarea6/files/floor.obj");
+  glmUnitize(piso);
+  glmVertexNormals(piso, 90.0, GL_TRUE);
+  modePiso = glmList(piso, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 }
-*/
+
+void loadAlice() {
+
+  pmodel5 = glmReadOBJ("../tarea6/files/tableBasseVerre.obj");
+  glmUnitize(pmodel5);
+  glmVertexNormals(pmodel5, 90.0, GL_TRUE);
+  mode5 = glmList(pmodel5, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
+
+  pmodel6 = glmReadOBJ("../tarea6/files/beerGlass.obj");
+  glmUnitize(pmodel6);
+  glmVertexNormals(pmodel6, 90.0, GL_TRUE);
+  mode6 = glmList(pmodel6, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
+}
 
 
+void room() {
+  glPushMatrix();
+    glTranslatef(0, .60, -1);
+    glScalef(2.3, 1, .8);
+    glCallList(modeWall);
+  glPopMatrix();
+
+  glPushMatrix();
+    glTranslatef(-2.3, .60, 0.5);
+    glRotatef(90, 0, 1, 0);
+    glScalef(1.5, 1, .8);
+    glCallList(modeWall);
+  glPopMatrix();
+
+  glPushMatrix();
+    glTranslatef(2.3, .60, 0.5);
+    glRotatef(90, 0, 1, 0);
+    glScalef(1.5, 1, .8);
+    glCallList(modeWall);
+  glPopMatrix();
+
+  glPushMatrix();
+    glTranslatef(0, -0.4, 0.5);
+    glRotatef(90, 0, 1, 0);
+    glScalef(1.5, .5, 2.3);
+    glCallList(modePiso);
+  glPopMatrix();
+}
+
+
+void drawAlice() {
+	/*mesa que mas aplauda*/
+	glPushMatrix();
+		glScalef(0.5,0.5,0.5);
+		glTranslatef(0.6, -0.77,0);
+		glCallList(mode5);
+  glPopMatrix();
+	/*alicia en el pais de la AA*/
+	glPushMatrix();
+		glTranslatef(0.3, 0.02, 0.4);
+		glRotatef(180, 0, 1, 0);
+		glScalef(.1, .1, .1);
+		glCallList(mode6);
+	glPopMatrix();
+}
 
 /*****************************************************************************/
 /*Main Functions**************************************************************/
@@ -747,6 +738,12 @@ int main(int argc, char **argv) {
   aa.print_answers();
 
   glutInit(&argc, argv);
+  
+  /* a falta de cilindro cubo*/
+  cubeList = glGenLists(1);
+  glNewList(cubeList, GL_COMPILE);
+  glutSolidCube (0.6);
+  glEndList();
 
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowSize(1024, 768); /*  Window Size If We Start In Windowed Mode */
@@ -785,13 +782,10 @@ int main(int argc, char **argv) {
     }
   #endif /*0 */
 
-  /*Inicializando Modelos
+  
   loadWallFloor();
   loadAlice();
-  loadCrazyLivingRoom();
-  loadHeartQueen();
-  loadPrincessRoom();
-  */
+  
 
   glutMainLoop();
 

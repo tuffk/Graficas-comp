@@ -25,7 +25,7 @@ class Answerme{
     const string r73 = "pinta el arreglo, con gl triangles, que va de 0 a 'n'";
     const string r74 = "crea una matrix de trasnformaciones de 4x4, pasandole un objeto uniform a cambiar, el segundo parametro siempre es falso, es la transpuesta y el tercer parametro son los valores que va a tomar";
     const string r75 = "le indica con el bit de color que habra color en gl, reseteando el buffer";
-    const string r76 = "guarda en el buffer 'vertices' con el tipo array_buffer y le indica que es un static_draw";
+    const string r76 = "guarda en el buffer 'vertices' con el tipo array_buffer y le indica que es un static_draw; estos es lo que recibe y que hara con ellos";
     const string r8 = "cactus";
 
     void print_answers()

@@ -114,39 +114,39 @@ void drawHearts(void);
 
 
 
-/*
-void loadCrazyLivingRoom() {
-  pmodel7 = glmReadOBJ("files/couch.obj");
+
+void loadobj() {
+  pmodel7 = glmReadOBJ("../tarea6/files/couch.obj");
   glmUnitize(pmodel7);
   glmVertexNormals(pmodel7, 90.0, GL_TRUE);
   mode7 = glmList(pmodel7, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 
-  pmodel8 = glmReadOBJ("files/armchair2.obj");
+  pmodel8 = glmReadOBJ("../tarea6/files/armchair2.obj");
   glmUnitize(pmodel8);
   glmVertexNormals(pmodel8, 90.0, GL_TRUE);
   mode8 = glmList(pmodel8, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 
-  pmodel9 = glmReadOBJ("files/carrito-de-madera.obj");
+  pmodel9 = glmReadOBJ("../tarea6/files/carrito-de-madera.obj");
   glmUnitize(pmodel9);
   glmVertexNormals(pmodel9, 90.0, GL_TRUE);
   mode9 = glmList(pmodel9, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 
-  pmodel10 = glmReadOBJ("files/deskLamp1.obj");
+  pmodel10 = glmReadOBJ("../tarea6/files/deskLamp1.obj");
   glmUnitize(pmodel10);
   glmVertexNormals(pmodel10, 90.0, GL_TRUE);
   mode10 = glmList(pmodel10, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 
-  pmodel11 = glmReadOBJ("files/tableGnome.obj");
+  pmodel11 = glmReadOBJ("../tarea6/files/tableGnome.obj");
   glmUnitize(pmodel11);
   glmVertexNormals(pmodel11, 90.0, GL_TRUE);
   mode11 = glmList(pmodel11, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 
-  pmodel12 = glmReadOBJ("files/tavolino.obj");
+  pmodel12 = glmReadOBJ("../tarea6/files/tavolino.obj");
   glmUnitize(pmodel12);
   glmVertexNormals(pmodel12, 90.0, GL_TRUE);
   mode12 = glmList(pmodel12, GLM_SMOOTH | GLM_2_SIDED | GLM_MATERIAL | GLM_TEXTURE);
 }
-*/
+
 
 
 void Reshape(int w, int h) {
@@ -541,6 +541,11 @@ void DrawAxis(float scale) {
 
     glBegin(GL_LINES);
 
+    GLfloat ambient[] = { 1.0, 1.0, 0.0, 1.0 }; // luz amarilla
+	GLfloat diffuse[] = { 0.5, 0.5, 0.5, 1.0 }; // difusa gris
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+
     glColor3f(1.0, 0.0, 0.0);
     glVertex3f(.8f, 0.05f, 0.0);
     glVertex3f(1.0, 0.25f, 0.0); /*  Letter X */
@@ -676,33 +681,57 @@ void Display(void) {
   glutSwapBuffers();
 }
 /*
-void room() {
+void drawcrazyLR() {
+  /*sillon*
   glPushMatrix();
-  glTranslatef(0, .60, -1);
-  glScalef(2.3, 1, .8);
-  glCallList(modeWall);
+    glRotatef(70, 0, 1, 0);
+    glRotatef(180,1,0,0);
+    glTranslatef(-.4, -1, 1.7);
+    glScalef(.8, .8, .8);
+    glCallList(mode7);
   glPopMatrix();
 
+  /*armchair*
   glPushMatrix();
-  glTranslatef(-2.3, .60, 0.5);
-  glRotatef(90, 0, 1, 0);
-  glScalef(1.5, 1, .8);
-  glCallList(modeWall);
+    glTranslatef(0, .45, -.4);
+    glScalef(.71, .71, .71);
+    glRotatef(90,1,0,0);
+    glCallList(mode8);
+  glPopMatrix();
+  /*lamp*
+  glPushMatrix();
+    glTranslatef(0, 0.1, 1);
+    glScalef(.5, .5, .5);
+    glCallList(mode10);
   glPopMatrix();
 
+  /*carrito*
   glPushMatrix();
-  glTranslatef(2.3, .60, 0.5);
-  glRotatef(90, 0, 1, 0);
-  glScalef(1.5, 1, .8);
-  glCallList(modeWall);
+    glTranslatef(2, .70, -.5);
+    glRotatef(180, 0, 1, 0);
+    glScalef(.5, .5, .5);
+    glCallList(mode9);
   glPopMatrix();
 
+  /*gnome*
   glPushMatrix();
-  glTranslatef(0, -0.4, 0.5);
-  glRotatef(90, 0, 1, 0);
-  glScalef(1.5, .5, 2.3);
-  glCallList(modePiso);
+    glRotatef(45,1,0,0);
+    glTranslatef(0,1.7,-1);
+    glScalef(0.5,0.5,0.5);
+    glCallList(mode11);
   glPopMatrix();
+
+  /*mesa*
+  glPushMatrix();
+    glTranslatef(2.13,.7,1.3);
+    glRotatef(90,0,0,1);
+    glScalef(4,4,4);
+    glCallList(mode12);
+  glPopMatrix();
+
+  /*barajas theme*
+  drawCards();
+  drawHearts();
 }
 */
 

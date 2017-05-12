@@ -28,4 +28,5 @@ class GLmagic{
         glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
     }
     
+    
 };

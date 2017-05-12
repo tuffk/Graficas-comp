@@ -48,6 +48,27 @@ void pos(double *px, double *py, double *pz, const int x, const int y,
 void getMatrix();
 void invertMatrix(const GLdouble *m, GLdouble *out);
 
+GLUnurbsObj *theNurb;
+GLfloat ctlpoints[4][4][3], points2[4][4][3];
+int showPoints = 0;
+void init_surface(void)
+{
+    int u, v;
+    for (u = 0; u < 4; u++) {
+        for (v = 0; v < 4; v++) {
+            ctlpoints[u][v][0] = 2.0*((GLfloat)u - 1.5);
+            ctlpoints[u][v][1] = 2.0*((GLfloat)v - 1.5);
+
+            if ( (u == 1 || u == 2) && (v == 1 || v == 2))
+                ctlpoints[u][v][2] = -3.0;
+            // else if (u == 0 || v== 0)
+            //     ctlpoints[u][v][2] = -0.0;
+            else
+             ctlpoints[u][v][2] = -0.0;
+        }
+    }				
+}
+
 /* because podemos */
 int full_screen = 0;
 
@@ -605,54 +626,7 @@ void HelpRenderBitmapString(float x, float y, void *font, char *string) {
     glutBitmapCharacter(font, *c);
 }
 
-void Display(void) {
-  if (lighting) {
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
-  } else {
-    glDisable(GL_LIGHTING);
-    glDisable(GL_LIGHT0);
-  }
 
-    GLfloat mat_solid[] = { 0.75, 0.75, 0.0, 1.0 };
-    GLfloat mat_zero[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat mat_transparent[] = { 0.0, 0.8, 0.8, 0.6 };
-    GLfloat mat_emission[] = { 0.0, 0.3, 0.3, 0.6 };
-
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glPushMatrix();
-    glLoadIdentity();
-    glTranslatef(0, 0, centerZ); /* to center object down Z */
-    glMultMatrixd(_matrix);
-
-    if (show_axis)
-      DrawAxis(1.0f);
-    if (wireframe)                               /* if Wireframe is checked */
-      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); /* draw wireframe */
-    else                                         /* else */
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); /* draw filled polygons */
-
-      glPushMatrix ();
-      glTranslatef (0.15, 0.15, -8.0);
-      glRotatef (15.0, 1.0, 1.0, 0.0);
-      glRotatef (30.0, 0.0, 1.0, 0.0);
-      glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
-      glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_transparent);
-      glEnable (GL_BLEND);
-      glDepthMask (GL_FALSE);
-      glBlendFunc (GL_SRC_ALPHA, GL_ONE);
-      glCallList (cubeList);
-      glDepthMask (GL_TRUE);
-      glDisable (GL_BLEND);
-   glPopMatrix ();
-   
-  glPopMatrix();
-
-  if (show_help)
-    HelpDisplay(ww, wh);
-
-  glutSwapBuffers();
-}
 
 
 void loadWallFloor() {
@@ -727,7 +701,59 @@ void drawAlice() {
 		glCallList(mode6);
 	glPopMatrix();
 }
+void Display(void) {
+  if (lighting) {
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+  } else {
+    glDisable(GL_LIGHTING);
+    glDisable(GL_LIGHT0);
+  }
 
+    GLfloat mat_solid[] = { 0.75, 0.75, 0.0, 1.0 };
+    GLfloat mat_zero[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_transparent[] = { 0.0, 0.8, 0.8, 0.6 };
+    GLfloat mat_emission[] = { 0.0, 0.3, 0.3, 0.6 };
+
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glPushMatrix();
+    glLoadIdentity();
+    glTranslatef(0, 0, centerZ); /* to center object down Z */
+    glMultMatrixd(_matrix);
+
+    if (show_axis)
+      DrawAxis(1.0f);
+    if (wireframe)                               /* if Wireframe is checked */
+      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); /* draw wireframe */
+    else                                         /* else */
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); /* draw filled polygons */
+
+      glPushMatrix ();
+        glTranslatef (0, 0, -1.0);
+        glRotatef (15.0, 1.0, 1.0, 0.0);
+        glRotatef (30.0, 0.0, 1.0, 0.0);
+        glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_transparent);
+        glEnable (GL_BLEND);
+        glDepthMask (GL_FALSE);
+        glBlendFunc (GL_SRC_ALPHA, GL_ONE);
+        glCallList (cubeList);
+        glDepthMask (GL_TRUE);
+        glDisable (GL_BLEND);
+    glPopMatrix ();
+
+    glPushMatrix();
+        room();
+        drawAlice();
+    glPopMatrix();
+   
+  glPopMatrix();
+
+  if (show_help)
+    HelpDisplay(ww, wh);
+
+  glutSwapBuffers();
+}
 /*****************************************************************************/
 /*Main Functions**************************************************************/
 /*****************************************************************************/
@@ -738,11 +764,12 @@ int main(int argc, char **argv) {
   aa.print_answers();
 
   glutInit(&argc, argv);
-  
+
   /* a falta de cilindro cubo*/
   cubeList = glGenLists(1);
   glNewList(cubeList, GL_COMPILE);
   glutSolidCube (0.6);
+  //init_surface();
   glEndList();
 
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

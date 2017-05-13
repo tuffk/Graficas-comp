@@ -1,0 +1,81 @@
+\documentclass[10pt, a4paper, twocolumn]{article} 
+\input{structure.tex} % Specifies the document structure and loads requires packages
+
+\title{Implementando OpenGL con Oculus Rift SDK}
+
+\author{
+	\authorstyle{Jaime Margolin\textsuperscript{1}, Daniel Monzalalala\textsuperscript{1} and Juan Carlos León\textsuperscript{1}} % Authors
+	\newline\newline 
+	\textsuperscript{1}\institution{Instituto de Estudios Superiores del Tecnológico de Monterrey Campus Santa Fe}\\  }
+
+\date{\today} 
+\begin{document}
+
+\maketitle 
+
+\thispagestyle{firstpage} % Apply the page style for the first page (no headers and footers)
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\lettrineabstract{El propósito del paper esta enfocado en dar una nueva perspectiva de como se puede incluir el uso de básicas y viejas funciones de OpenGL con la tecnología más sofisticada y moderna como lo es el SDK de Oculus y las librerías que utiliza esta última, y como estas tecnologías pueden ir de1 la mano para crear nuevas y mejores soluciones en el campo de las gráficas computacionales. Para esto se utilizaron librerías de modelos que el mismo SDK provee, logrando así una conjunción más armonica para el resultado final. Este paper ayudará a todos aquellos que en su momento quieran explorar el mundo de "VR" y quieran implementarlo de manera fácil y que quieran utilizar OpenGL envez del estandar para VR de DirctX.}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introducción}
+
+En la actualidad, hay campos que han surgido dentro del desarrollo de las tecnologías computacionales, siendo la Realidad Virtual uno de los que parece tener más futuro, el poder simular ambientes completos y poder hacer que el mismo usuario puede estar inmerso en el mismo, haciendole pensar que esta en un ambiente como en el que esta acostumbrado a interactuar.
+
+Ahora una de las prácticas que se ha vuelto de las más comúnes es el uso de Oculus Rift, el cual es un dispositivo que puede simular en forma 3D ambiantes, los cuales son controlados por el mismo dispositivo, este dispositivo es un tanto parecido a unos lentes, haciendo asi que la combinacion entre los lentes y un buen equipo de sonido portátil (audífonos) ó estático (bocinas) puedan hacer que el usuario se sienta en el lugar que se esta simulando, un lugar que puede ver ante sus propios ojos e inclusive en algunas ocasiones y con algunos otros aditamentos, hacer que se pueda interactuar de manera \textbf{\textit{"normal"}}.
+
+
+
+%----------------------------------------------------------------------------------------
+\section{Trabajo Previo}
+
+El trabajo previo en el campo del Oculus SDK esta desarrollado en DirectX y los mismos desarrolladores del SDK recomiendan utilizarla. Encontramos muy poco realizado con OpenGL en el campo del oculus rift....
+
+%------------------------------------------------
+
+\subsection{Paper 1}
+
+
+
+%------------------------------------------------
+
+\subsection{Paper 2}
+
+
+\section{Desarrollo}
+El desarrollo consistio en tomar como base el (unico) proyecto ejemplo que tenia el SDK en OpenGL. Este ejemplo consistia de un pequeño cuarto con una mesa una silla un cubo que gira y un mueble de pared. lo que se realizo fue investigar como estaba el codigo compuesto. Se entonctro la funcion
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+AddSolidColorBox(float x1, float y1,
+ float z1, float x2, float y2, 
+ float z2, DWORD c)
+\end{lstlisting}
+que lo que hace es agregar una "caja a la escena"
+
+
+\section{Resultados}
+
+\section{Trabajo Futuro}
+
+\section{Conclusiones}
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\printbibliography[{title = "example.bib" }] % Print the bibliography, section title in curly brackets
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

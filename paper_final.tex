@@ -75,6 +75,16 @@ Al piso se le asigno un color amarillento para que se parezca a la arena del mar
 se intento agregar alguna de las texturas que ya estan incluidas en el SDK al piso para hcerlo parecer mas real pero las texturas del SDK daban la impresion de ser mosaicos y esto restaba un poco de realismo a la escena.  
 
 \subsubsection{Las algas}
+Las algas constan de un tallo de altura semi aleatoria. La altura del tallo es de 0.8 mas un numero aleatorio que va del $0.0$ al $0.7$ esto nos da una altura alteatoria de $0.8$ a $1.5$. Tambien se agregan hojas a la algas. Las hojas constan de 4 cubos pequeños acomodados en diagonal a partir del tallo. a una altura aleatoria de $0.2$ a $0.3$. cada alga puede tener de 0 a 4 hojas y esto tambien se decide de forma aleatoria. Y por ultimo la posicion de las hojas tambien se decide de forma aleatoria. Esto significa que sin importar la cnatidad de algas que se agreguen a la escena habra una gran variadad de algas con apariencias ligeramente diferentes para darle un toque de mayor realismo a la pecera.
+
+\subsubsection{Los peces}
+Los peces estan compuestos por 3 elementos principales: el cuerpo, la cara, las aletas. el cuerpo del pez consiste de un cubo grade de $1x1x1$. Los demas elementos del pez van "pegados" al cuerpo. la cara del pez esta compuesta por una boca que es un rectangulo pequeño en el centro en el eje X y a 1/3 del eje Y del lado frontal del cubo, los ojos son 2 cuadrito negros a 1/3 y 2/3 del eje X y a 2/3 del eje Y del lado frontal del pez. 
+
+Las aletas entan divididas de la siguiente forma: 2 aletas laterales, 1 aleta dorsal y 1 aleta trasera. Las aletas laterales constan de 2 rectangulos delgados. uno mas pequeño que esta directamente pegado al pez y otro mas grande conectado al primero. los colores de las aletas son diferentes al del cuerpo del pez y cada uno de los rectangulos tiene su propio color.
+
+La aleta dorsal esta compuesta de un rectangulo horizontal largo y de otro mas corto. esta aleta esta en la parte superior del pez. ambos rectangulos estan directamente pegados al cuerpo del pez, primero el rectangulo grande seguido del chico. los colores son los mismos que los de las aletas laterales. 
+
+la aleta trasera, o cola, esta compuesta de 3 rectangulos de tamaño creciente y ancho decresiente. el mas pequeño y grueso esta pegado al pez mientras que el mas grande y delgado es el mas alejado. el primer rectangulo va pegado al pez de forma vertical, el segudo va pegado a este y el tercero al segundo. los colores de estos rectangulos son, el primero y tercero tienen el color del primer rectangulo de las aletas laterales y el 2 rectangulo el color del segundo rectangulo de las aletas laterales.
 
 
 

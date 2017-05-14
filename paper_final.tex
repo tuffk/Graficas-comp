@@ -38,13 +38,10 @@ Ahora una de las prácticas que se ha vuelto de las más comúnes es el uso de O
 
 El trabajo previo en el campo del Oculus SDK esta desarrollado en DirectX y los mismos desarrolladores del SDK recomiendan utilizarla. Encontramos muy poco realizado con OpenGL en el campo del oculus rift....
 
-%------------------------------------------------
 
 \subsection{Paper 1}
 
 
-
-%------------------------------------------------
 
 \subsection{Paper 2}
 
@@ -105,9 +102,48 @@ Las algas de decidio que deberia de tener un posicion aleatoria dentro de la pec
 La posicion inicial de los peces tambien es aleatoria para dar un toque de realismo. Pero para mantenerlo visialmente estetico se decidio que la altura a la que nadan los peces seria pre definida, asi se evita que los peces pasen unos sobre otros. la altura mas baja es para los que nada en linea vertical (recorrido largo en el rectangulo que forma la pecera) mientras que los que nadan mas alto son los que recorren la pecera de forma horizontal (recorrido corto en el rectangulo que forma la pecera).
 
 \subsection{Animaciones}
-Para dar un toque de realismo se animaron todos los animales marinos de la escena.
+Para dar un toque de realismo se animaron todos los animales marinos de la escena. Las animaciones fueron de las partes mas retadoras ya que se trato de mantener una animacion congruente con el \textbf{pixel art} de la escena pero a la vez de hacerlo parecido a la realidad para mentener el toque de realismo que se le esta intentando dar al proyecto.
 
+\subsubsection{Erizo}
+El erizo es el animal con el movimiento mas siemple. Él se mueve siempre en un circulo alrededor del centro ($x/2,y/2$) de la pecera, tambien es el mas rapido de todos los animales y el único que se mueve por el piso.
 
+\subsubsection{Tiburon}
+A peticion del profesor \textit{"Estaria padre que agreguen un tiburon asi que vaya como acechando a los otros peces"} se agrego el tiburon y la animacion tenia que ir de acuerdo a dicha peticion. se opto por el movimiento en forma de \textit{8 extendido}, para que entre y salga de la escena como si estuviera acechando a los peces. El tiburon es el mas lento para dar un toque de realismo al acechar.
+
+ \subsubsection{Peces}
+Los peces son los animales con mas movimientos. para dar un toque de realismo se les programo un movimiento hacia el frente mientras que tienen un movimiento ondulatorio ya sea hacia arriba y abajo o de derecha a izquierda. 
+ 
+Ademas de tener una posicion de origen aleatoria los peces tienen movimiento aleatorio, la velocidad con la que avanzan hacia el frente es aleatoria entre $0.22$ a $0.44$. esto hace que los peces se muevan a diferentes velocidades y da un toque de realismo a la escena.
+
+Con fines demostrativos para la exposicion se decidio fijar el movimiento ondulatorio de los peces de la siguiente forma. lo que se mueven de forma vertical ondulan de arriba abajo mientras que lo que de mueve en forma horizontal ondulan de derecha a izquierda. 
+
+\section{Complicaciones}
+\subsection{figuras}
+El primer problema con el que se encontro es que el SDK para el oculus únicamente tiene una figura, \textbf{el cubo}, por lo que la primera restriccion y la mas compleja fue el tener que armar todo con subos. Tambien la funcion que crea los cubos recibe como parametros la XYZ inicial y final, a diferencia de las funciones basicas que se vieron en clase que reciben unicamente el tamaño del cubo (y este es creado en la posicion en la que se encuentra GL en ese momento). Por lo que todas las posiciones y movimientos de la escena fueron calculados por nosotros. 
+
+para lograr las distintas figuras de la pecera se hicieron muchos claculos para lograr modificar los cubos a que fueran cuadrados y rectangulos que pudieramos usar. ademas del calculo que hicimos para posicionarlos unos ocn respecto de otros.
+
+\subsection{OpenGL SDK vs lo visto en clase}
+Encontramos diferencias sustnaciales entre lo que se usa en el SDK del oculus y lo que se vio en clase. Aquí lsitaremos las que mas nos causaron problemas. \begin{itemize}
+\item GL main loop - En este proyecto no hay un main loop que se paresca al main loop de GL. la funcion del main loop tiene funcionalidad similar pero no acepta ninguno de las funciones de GL dentro.
+\item GL init - no hay una funcion de init como en GL.
+\item funciones de GL - en el SDK del oculus no sirven ninguna de las siguientes funciones que se vieron en clase
+\begin{itemize}
+\item push matrix
+\item pop matrix
+\item rotate
+\item scale 
+\item translate
+\item curvas 
+\item superficies
+\end{itemize}
+\item luz - la luz como se vio en clase se agrega 1 (o varias) fuente de luz a la escena la cual interactua con los materiales de los objetos para ser reflejada. en el proeycto no hay ninguna fuente de luz, si no que cada objeto tiene su propio color, que de cierta forma es la luz que este objeto irradia, pero sin afectar a las demas o reflejarse en otros objetos.
+\end{itemize}
+
+\subsection{.OBJ's}
+Se intento cargar archivos \textbf{.OBJ} de muchas maneras y ninugna permitio cargarlos. se probaron varias librerias y metodos entre los que destacan: glm (visto en clase) y assimp.
+
+Inclusive se intento cargar los archivos con Dirctx y tampoco se pudo
 
 \section{Resultados}
 

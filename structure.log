@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.1.22)  12 MAY 2017 18:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.5.14)  14 MAY 2017 10:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **structure.tex
 (./structure.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
 
 ! LaTeX Error: \usepackage before \documentclass.
 
@@ -26,7 +26,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.2 \usepackage{
-                microtype}
+                listings}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
@@ -38,6 +38,18 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.3 \usepackage{
+                microtype}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+
+! LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 \usepackage{
                 amsmath,amsfonts,amsthm}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -49,7 +61,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 \usepackage[svgnames]{
+l.5 \usepackage[svgnames]{
                           xcolor}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -61,7 +73,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5 ...ang, small, labelfont=bf, up, textfont=it]{
+l.6 ...ang, small, labelfont=bf, up, textfont=it]{
                                                   caption}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -73,7 +85,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6 \usepackage{
+l.7 \usepackage{
                 booktabs}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -85,7 +97,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7 \usepackage{
+l.8 \usepackage{
                 lastpage}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -97,7 +109,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.8 \usepackage{
+l.9 \usepackage{
                 graphicx}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -109,13 +121,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.9 \usepackage{
-                enumitem}
+l.10 \usepackage{
+                 enumitem}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 ! Undefined control sequence.
-l.10 \setlist
+l.11 \setlist
              {noitemsep}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -130,7 +142,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.10 \setlist{n
+l.11 \setlist{n
                oitemsep}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -151,13 +163,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.11 \usepackage{
+l.12 \usepackage{
                  sectsty}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 ! Undefined control sequence.
-l.12 \allsectionsfont
+l.13 \allsectionsfont
                      {\usefont{OT1}{phv}{b}{n}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -165,7 +177,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 12.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 13.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
@@ -176,13 +188,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.13 \usepackage{
+l.14 \usepackage{
                  geometry}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 ! Undefined control sequence.
-l.14 \geometry
+l.15 \geometry
               {
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -260,7 +272,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.23 \usepackage[T1]{
+l.24 \usepackage[T1]{
                      fontenc}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -272,7 +284,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.24 \usepackage[utf8]{
+l.25 \usepackage[utf8]{
                        inputenc}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -284,27 +296,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.25 \usepackage{
-                 XCharter}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
-
-! LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
 l.26 \usepackage{
-                 fancyhdr}
+                 XCharter}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 ! Undefined control sequence.
 <argument> \undefinedpagestyle 
                                
-l.27 \pagestyle{fancy}
+l.28 \pagestyle{fancy}
                       
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -319,7 +319,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 \renewcommand{\headrulewidth}
+l.29 \renewcommand{\headrulewidth}
                                   {0.0pt}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -331,13 +331,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.29 \renewcommand{\footrulewidth}
+l.30 \renewcommand{\footrulewidth}
                                   {0.4pt}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Undefined control sequence.
-l.31 \lhead
+l.32 \lhead
            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -346,7 +346,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.32 \chead
+l.33 \chead
            {\textit{\thetitle}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -357,7 +357,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \thetitle 
                           
-l.32 \chead{\textit{\thetitle}
+l.33 \chead{\textit{\thetitle}
                               }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -366,7 +366,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.33 \rhead
+l.34 \rhead
            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -375,7 +375,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.34 \lfoot
+l.35 \lfoot
            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -384,7 +384,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.35 \cfoot
+l.36 \cfoot
            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -393,7 +393,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.36 \rfoot
+l.37 \rfoot
            {\footnotesize Page \thepage\ of \pageref{LastPage}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -402,7 +402,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.36 \rfoot{\footnotesize
+l.37 \rfoot{\footnotesize
                           Page \thepage\ of \pageref{LastPage}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -415,7 +415,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
-l.36 \rfoot{\footnotesize Page \thepage
+l.37 \rfoot{\footnotesize Page \thepage
                                        \ of \pageref{LastPage}}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -428,7 +428,7 @@ Missing character: There is no f in font nullfont!
 ! Undefined control sequence.
 <write> ... Reference `LastPage' on page \thepage 
                                                   \space undefined\on@line .
-l.36 ...esize Page \thepage\ of \pageref{LastPage}
+l.37 ...esize Page \thepage\ of \pageref{LastPage}
                                                   }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -437,10 +437,10 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: Reference `LastPage' on page  undefined on input line 36.
+LaTeX Warning: Reference `LastPage' on page  undefined on input line 37.
 
 ! Undefined control sequence.
-l.37 \fancypagestyle
+l.38 \fancypagestyle
                     {firstpage}{
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -458,7 +458,7 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no e in font nullfont!
 ! Undefined control sequence.
-l.38 	\fancyhf
+l.39 	\fancyhf
               {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -473,13 +473,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.43 \usepackage{
+l.44 \usepackage{
                  titling}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
 ! Undefined control sequence.
-l.45 \pretitle
+l.46 \pretitle
               {
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -490,7 +490,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \HorRule ->\color 
                   {DarkGoldenrod}\rule {\linewidth }{1pt}
-l.47 	\HorRule
+l.48 	\HorRule
               \vspace{10pt}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -512,7 +512,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no d in font nullfont!
 ! Undefined control sequence.
-l.49 	\color
+l.50 	\color
             {DarkRed}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -521,7 +521,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.51 \posttitle
+l.52 \posttitle
                {\par\vskip 15pt}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -530,27 +530,27 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 10--51
+Overfull \hbox (20.0pt too wide) in paragraph at lines 11--52
 []
  []
 
 
-Overfull \hbox (10.86105pt too wide) in paragraph at lines 10--51
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 11--52
 []
  []
 
 
-Overfull \hbox (81.7911pt too wide) in paragraph at lines 10--51
+Overfull \hbox (81.7911pt too wide) in paragraph at lines 11--52
 \OT1/phv/b/n/32 Dark-
  []
 
 
-Overfull \hbox (60.4477pt too wide) in paragraph at lines 10--51
+Overfull \hbox (60.4477pt too wide) in paragraph at lines 11--52
 \OT1/phv/b/n/32 Red
  []
 
 ! Undefined control sequence.
-l.52 \preauthor
+l.53 \preauthor
                {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -559,7 +559,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.53 \postauthor
+l.54 \postauthor
                 {
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -570,7 +570,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \HorRule ->\color 
                   {DarkGoldenrod}\rule {\linewidth }{1pt}
-l.55 	\par\HorRule
+l.56 	\par\HorRule
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -585,7 +585,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.55 	\par\HorRule
+l.56 	\par\HorRule
                   
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -610,7 +610,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.58 \usepackage{
+l.59 \usepackage{
                  lettrine}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -622,7 +622,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.59 \usepackage{
+l.60 \usepackage{
                  fix-cm}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -634,13 +634,11 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.66 \usepackage{
+l.67 \usepackage{
                  xstring}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
 
-\bibdata{example}
-No file structure.bbl.
 
 ! LaTeX Error: \usepackage before \documentclass.
 
@@ -648,7 +646,39 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.73 \usepackage[autostyle=true]{
+l.72 ...kend=bibtex,style=authoryear,natbib=true]{
+                                                  biblatex}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+! Undefined control sequence.
+l.73 \addbibresource
+                    {example.bib}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no e in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no b in font nullfont!
+
+! LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.74 \usepackage[autostyle=true]{
                                  csquotes}
 \usepackage may only appear in the document preamble, i.e.,
 between \documentclass and \begin{document}.
@@ -661,11 +691,11 @@ between \documentclass and \begin{document}.
 
  
 Here is how much of TeX's memory you used:
- 81 strings out of 493029
- 1116 string characters out of 6136234
- 53104 words of memory out of 5000000
- 3709 multiletter control sequences out of 15000+600000
+ 80 strings out of 494910
+ 1112 string characters out of 6179836
+ 45524 words of memory out of 5000000
+ 3465 multiletter control sequences out of 15000+600000
  5366 words of font info for 18 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
+ 36 hyphenation exceptions out of 8191
  19i,2n,19p,135b,123s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!

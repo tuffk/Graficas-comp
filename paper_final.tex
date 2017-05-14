@@ -50,6 +50,8 @@ El trabajo previo en el campo del Oculus SDK esta desarrollado en DirectX y los 
 
 
 \section{Desarrollo}
+Nosotros intentamos crear una pecera  con distintos animales marinos utilisando el SDK del oculus rift  \textbf{DK2} para OpenGL. Por las funciones proveidas pro el SDK para OpenGL optamos por realizar este acuario con \textit{pixel art} que es una especie de representacion de los objetos en formas ams cuadradas al estilo de los videojeugos de \textbf{8 bit}.
+
 El desarrollo consistio en tomar como base el (unico) proyecto ejemplo que tenia el SDK en OpenGL. Este ejemplo consistia de un pequeño cuarto con una mesa una silla un cubo que gira y un mueble de pared. lo que se realizo fue investigar como estaba el codigo compuesto. Se entonctro la funcion
 \lstset{language=C++,
                 keywordstyle=\color{blue},
@@ -62,7 +64,18 @@ AddSolidColorBox(float x1, float y1,
  float z1, float x2, float y2, 
  float z2, DWORD c)
 \end{lstlisting}
-que lo que hace es agregar una "caja a la escena"
+que lo que hace es agregar una "caja a la escena". esta funcion recibe como parametros la x, y, z iniciales , la x, y, z finales y el color de la caja en hexadecimal.
+
+\subsection{construccion del mundo}
+\subsubsection{La pecera}
+
+El mundo consta de 4 paredes 1 piso y 1 techo. estos forman la pecera en la que los distintos animales marinos estaran nadando.
+Cada una de las paredes y el techo son creados agregando un cubo con 2 de sus aldos grandes y el 3 muy pequeño para que asi se asemeje a una pared delgada. El piso es creado de igual forma. por ultimo los colores que se le asiganaron a las paredes y al techo fue el mismo tono de azul, esto se eligio para lograr un efecto de continuidad. este efecto evita que se peuda diferenciar el momento en el que empiesa una pared y otra y donde conectan con el techo, asi dando un mayor sentido de profundidad.
+Al piso se le asigno un color amarillento para que se parezca a la arena del mar. 
+se intento agregar alguna de las texturas que ya estan incluidas en el SDK al piso para hcerlo parecer mas real pero las texturas del SDK daban la impresion de ser mosaicos y esto restaba un poco de realismo a la escena.  
+
+\subsubsection{Las algas}
+
 
 
 \section{Resultados}

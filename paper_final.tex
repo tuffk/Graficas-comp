@@ -66,7 +66,7 @@ AddSolidColorBox(float x1, float y1,
 \end{lstlisting}
 que lo que hace es agregar una "caja a la escena". esta funcion recibe como parametros la x, y, z iniciales , la x, y, z finales y el color de la caja en hexadecimal.
 
-\subsection{construccion del mundo}
+\subsection{armado del mundo}
 \subsubsection{La pecera}
 
 El mundo consta de 4 paredes 1 piso y 1 techo. estos forman la pecera en la que los distintos animales marinos estaran nadando.
@@ -78,13 +78,34 @@ se intento agregar alguna de las texturas que ya estan incluidas en el SDK al pi
 Las algas constan de un tallo de altura semi aleatoria. La altura del tallo es de 0.8 mas un numero aleatorio que va del $0.0$ al $0.7$ esto nos da una altura alteatoria de $0.8$ a $1.5$. Tambien se agregan hojas a la algas. Las hojas constan de 4 cubos pequeños acomodados en diagonal a partir del tallo. a una altura aleatoria de $0.2$ a $0.3$. cada alga puede tener de 0 a 4 hojas y esto tambien se decide de forma aleatoria. Y por ultimo la posicion de las hojas tambien se decide de forma aleatoria. Esto significa que sin importar la cnatidad de algas que se agreguen a la escena habra una gran variadad de algas con apariencias ligeramente diferentes para darle un toque de mayor realismo a la pecera.
 
 \subsubsection{Los peces}
-Los peces estan compuestos por 3 elementos principales: el cuerpo, la cara, las aletas. el cuerpo del pez consiste de un cubo grade de $1x1x1$. Los demas elementos del pez van "pegados" al cuerpo. la cara del pez esta compuesta por una boca que es un rectangulo pequeño en el centro en el eje X y a 1/3 del eje Y del lado frontal del cubo, los ojos son 2 cuadrito negros a 1/3 y 2/3 del eje X y a 2/3 del eje Y del lado frontal del pez. 
+Los peces estan compuestos por 3 elementos principales: el cuerpo, la cara, las aletas. el cuerpo del pez consiste de un cubo grade de $1x1x1$. Los demas elementos del pez van "pegados" al cuerpo. la cara del pez esta compuesta por una boca que es un rectangulo pequeño en el centro en el eje $X$ y a $1/3$ del eje $Y$ del lado frontal del cubo, los ojos son 2 cuadrito negros a $1/3$ y $2/3$ del eje $X$ y a $2/3$ del eje $Y$ del lado frontal del pez. 
 
 Las aletas entan divididas de la siguiente forma: 2 aletas laterales, 1 aleta dorsal y 1 aleta trasera. Las aletas laterales constan de 2 rectangulos delgados. uno mas pequeño que esta directamente pegado al pez y otro mas grande conectado al primero. los colores de las aletas son diferentes al del cuerpo del pez y cada uno de los rectangulos tiene su propio color.
 
 La aleta dorsal esta compuesta de un rectangulo horizontal largo y de otro mas corto. esta aleta esta en la parte superior del pez. ambos rectangulos estan directamente pegados al cuerpo del pez, primero el rectangulo grande seguido del chico. los colores son los mismos que los de las aletas laterales. 
 
 la aleta trasera, o cola, esta compuesta de 3 rectangulos de tamaño creciente y ancho decresiente. el mas pequeño y grueso esta pegado al pez mientras que el mas grande y delgado es el mas alejado. el primer rectangulo va pegado al pez de forma vertical, el segudo va pegado a este y el tercero al segundo. los colores de estos rectangulos son, el primero y tercero tienen el color del primer rectangulo de las aletas laterales y el 2 rectangulo el color del segundo rectangulo de las aletas laterales.
+
+\subsubsection{tiburon}
+El tiburon sigue la misma logica de contruccion que los peces unicamente se modifico el largo del cuerpo que para el tiburon es de $1x1x3$ y el grosor de las aletas, etas se hicieron mas gruesas para darle un toque de realismo. tambien se adecuo el posisionamiento de las aletas para que se mantuviera la proporcion del cuerpo. el tiburon es completamente negro con tonos grises en las aletas y ojos blancos.
+
+\subsubsection{Erizo}
+Para darle variedad a la vida marina en la pecera se decidio agregar un erizo de mar. el erizo tiene un cuerpo cuadrado de $0.5x0.5x0.5$ y 5 espinas. su cuerpo y espinas son de color gris. las espinas fueron creadas de forma en que todas estuvieran distibuidas por el cuepro del erizo y tuvieran longitudes ligeramente diferentes para dar un toque de realismo.
+
+\subsection{Construccion del mundo}
+Con todos los elementos del mundo armados se tienen que agregar a la escena. Para dar un toque de realismo se decidio que las posiciones de los peces como de las algas deberian ser aleatorias. 
+
+\subsubsection{Tiburon y Erizo}
+Por sus caracteristicas y funciones dentro de la escena se opto por dejar al tiburon y al erizo en una posicion de inicio fijas.
+
+\subsubsection{Algas}
+Las algas de decidio que deberia de tener un posicion aleatoria dentro de la pecera para dar un toque de realismo. cada vez que se corre el programa las algas apareserane n lugares distintos. Como se agrega una gran cantidad de algas a la escena el darles una posicion aleatoria ayuda a distribuirlas. las algas se crean en un rango de $-10$ a $10$ en $X$ y de $-20$ a $20$ en $Z$, esto para abarcar la totalidad de la pecera.
+
+\subsubsection{Peces}
+La posicion inicial de los peces tambien es aleatoria para dar un toque de realismo. Pero para mantenerlo visialmente estetico se decidio que la altura a la que nadan los peces seria pre definida, asi se evita que los peces pasen unos sobre otros. la altura mas baja es para los que nada en linea vertical (recorrido largo en el rectangulo que forma la pecera) mientras que los que nadan mas alto son los que recorren la pecera de forma horizontal (recorrido corto en el rectangulo que forma la pecera).
+
+\subsection{Animaciones}
+Para dar un toque de realismo se animaron todos los animales marinos de la escena.
 
 
 
